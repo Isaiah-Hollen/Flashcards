@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>CSS Advanced</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Css Advanced Knowledge</div>
+                <div class="card-back" id="card-back">Advanced Knowledge</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front: "What is the difference between @keyframes and animation-name?", back: "@keyframes defines an animation, while animation-name refers to it when applying the animation to an element." },
+            { front: "How do you define and use a CSS variable?", back: "Define: `--main-color: #333;` Use: `color: var(--main-color);`" },
+            { front: "What does the 'will-change' property do?", back: "Hints the browser about which properties will change, enabling optimizations." },
+            { front: "How do you create a grid container in CSS?", back: "Use `display: grid;` on the container element." },
+            { front: "What does 'grid-template-columns: repeat(3, 1fr);' mean?", back: "Creates 3 equal-width columns using 1 fraction of available space each." },
+            { front: "How do you name areas in CSS Grid?", back: "Use `grid-template-areas` with a pattern of strings." },
+            { front: "What is the purpose of the 'place-items' property in Grid?", back: "Shorthand for setting both `align-items` and `justify-items`." },
+            { front: "What is the difference between minmax() and auto-fit?", back: "`minmax()` defines a size range; `auto-fit` fills space with as many items as fit." },
+            { front: "What does 'content-visibility: auto;' do?", back: "Improves performance by skipping rendering of off-screen content." },
+            { front: "How do you animate transform properties like scale or rotate?", back: "Use `transform` in combination with `transition` or `animation`." },
+            { front: "What is specificity in CSS?", back: "A system used to determine which CSS rule applies when multiple rules target the same element." },
+            { front: "How do you increase specificity without using !important?", back: "Use more specific selectors or combine selectors (e.g., `div.className`)." },
+            { front: "How do you disable pointer events on child elements but not on the parent?", back: "Use `pointer-events: none;` on children only." },
+            { front: "What does 'isolation: isolate;' do?", back: "Creates a new stacking context for the element." },
+            { front: "What is a stacking context?", back: "A three-dimensional context that determines the order of layered elements (using z-index)." },
+            { front: "What is the use of `aspect-ratio` in CSS?", back: "Maintains a width-to-height ratio for elements like images or divs." },
+            { front: "What does 'contain: layout;' do?", back: "Enables layout containment, optimizing rendering." },
+            { front: "What is the difference between logical and physical properties?", back: "Logical properties adapt to writing modes (e.g., `margin-inline` vs. `margin-left`)." },
+            { front: "What is the :has() pseudo-class used for?", back: "Selects elements that contain a specific descendant (e.g., `div:has(img)`)." },
+            { front: "What is the purpose of the ::marker pseudo-element?", back: "Styles the marker of list items (like bullets or numbers)." },
+            { front: "How do you make a grid item span multiple columns?", back: "Use `grid-column: span 2;` or `grid-column: 1 / 3;`" },
+            { front: "What is the difference between relative and sticky positioning?", back: "`sticky` sticks based on scroll position; `relative` moves based on offset but stays in flow." },
+            { front: "How do you animate along a path in CSS?", back: "Use `offset-path` with `motion-path` and animate using `offset-distance`." },
+            { front: "How do you control scroll snapping?", back: "Use `scroll-snap-type` on the container and `scroll-snap-align` on children." },
+            { front: "What does the 'filter' property do?", back: "Applies graphical effects like blur, brightness, or contrast." },
+            { front: "What is the difference between CSS transitions and animations?", back: "Transitions are triggered by state changes; animations run independently using keyframes." },
+            { front: "How do you create a custom scrollbar in CSS?", back: "Use `::-webkit-scrollbar` and related pseudo-elements (note: browser-specific)." },
+            { front: "What is a media feature used for dark mode?", back: "`@media (prefers-color-scheme: dark)`" },
+            { front: "How do you pause a CSS animation?", back: "Use `animation-play-state: paused;`" },
+            { front: "What is the use of the `backface-visibility` property?", back: "Controls whether the back side of an element is visible when rotated." },
+            { front: "What does 'scroll-behavior: smooth;' do?", back: "Enables smooth scrolling when navigating via anchors or JS scroll." },
+            { front: "What does 'hyphens: auto;' do?", back: "Allows automatic hyphenation of words when wrapping text." },
+            { front: "How do you make an element full-screen with only CSS?", back: "Use `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;`" },
+            { front: "What is the role of `env()` in CSS?", back: "Accesses environment variables (like safe-area-inset for notched devices)." },
+            { front: "How do you make a pure CSS tooltip?", back: "Use a hidden element that becomes visible on `:hover` of the parent." },
+            { front: "How do you override user agent styles?", back: "Use a CSS reset or set all elements to a known baseline." },
+            { front: "How do you disable text selection in CSS?", back: "`user-select: none;`" },
+            { front: "What is 'mix-blend-mode' used for?", back: "Determines how an element's content blends with its background." },
+            { front: "How do you detect screen orientation in media queries?", back: "`@media (orientation: landscape)` or `(orientation: portrait)`" },
+            { front: "What does `@supports` do in CSS?", back: "Allows conditional rules based on browser support for a property." },
+            { front: "How do you ensure accessibility for visually hidden elements?", back: "Use `position: absolute; width: 1px; height: 1px; overflow: hidden;` (not `display: none;`)" },
+            { front: "How do you apply styles to an element only if it’s empty?", back: "`:empty` pseudo-class" },
+            { front: "How do you create a masonry layout in CSS Grid?", back: "Use `grid-template-rows: masonry;` (note: experimental in some browsers)" },
+            { front: "How can you add dynamic counters in CSS?", back: "Use `counter-reset` and `counter-increment` with `content` in `::before` or `::after`." },
+            { front: "What is a line clamp?", back: "Truncates text to a specified number of lines with ellipsis, using `-webkit-line-clamp`." },
+            { front: "What is the purpose of the `steps()` timing function in CSS?", back: "Creates stepped animations, often for sprite sheets or discrete transitions." },
+            { front: "How do you preload fonts for performance?", back: "Use `<link rel='preload' as='font' type='font/woff2'>` in HTML." },
+            { front: "How do you optimize CSS for critical rendering?", back: "Inline critical CSS and defer non-essential styles using `media` or JavaScript." },
+            { front: "How can you disable animations for users who prefer reduced motion?", back: "`@media (prefers-reduced-motion: reduce)`" }
+        ];
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>CSS Basics</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Css Basics</div>
+                <div class="card-back" id="card-back">Basics</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" accesskey="l" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front: "What does CSS stand for?", back: "CSS stands for Cascading Style Sheets." },
+            { front: "Where in an HTML document is the correct place to refer to an external CSS file?", back: "In the <head> section using <link rel='stylesheet' href='style.css'>." },
+            { front: "What is the correct syntax for referring to an external CSS file?", back: "<link rel='stylesheet' href='style.css'>" },
+            { front: "Which HTML tag is used to define an internal style sheet?", back: "<style>" },
+            { front: "How do you insert a comment in a CSS file?", back: "/* This is a comment */" },
+            { front:"Which property is used to change the background color?", back:"background-color"},
+            { front:"Which CSS property is used to change the text color of an element?", back:"color"},
+            { front:"Which CSS property controls the text size?", back:"font-size"},
+            { front:"How do you make all '<p>' elements bold using CSS?", back:"p { font-weight: bold; }"},
+            { front:"What is the correct CSS syntax to make all <h1> elements red?", back:"h1 { color: red; }"},
+            { front:"How do you select an element with id 'demo'?", back:"#demo"},
+            { front:"How do you select all elements with class 'example'?", back:".example"},
+            { front:"What is the correct CSS syntax to change the font of all <p> elements to Arial?", back:"p { font-family: Arial; }"},
+            { front:"Which property is used to change the left margin of an element?", back:"margin-left"},
+            { front:"What does a:hover do in CSS?", back:"Applies styles when a user hovers over a link or element."},
+            { front:"How do you set a background image in CSS?", back:"background-image: url('image.jpg');"},
+            { front:"What does the background-repeat: no-repeat; property do?", back:"It prevents the background image from repeating."},
+            { front:"How do you make a background image cover the entire element?", back:"background-size: cover;"},
+            { front:"How can you make text transparent using CSS?", back:"color: transparent; or opacity: 0;"},
+            { front:"What is the shorthand property for background?", back:"background: [color] [image] [repeat] [position] [attachment];"},
+            { front:"What are the four components of the CSS box model?", back:"Content, Padding, Border, Margin"},
+            { front:"How do you add padding inside an element?", back:"Use the padding property. Example: padding: 10px;"},
+            { front:"Which property sets the space outside the border?", back:"margin"},
+            { front:"How do you set the border of an element to 2px solid blue?", back:"border: 2px solid blue;"},
+            { front:"How do you make a box 200px wide and 100px tall?", back:"width: 200px; height: 100px;"},
+            { front:"What does the position: absolute; property do?", back:"Positions the element relative to the nearest positioned ancestor."},
+            { front:"How is position: relative; different from absolute?", back:"relative keeps space in normal flow; absolute does not."},
+            { front:"What does the z-index property control?", back:"Controls the stack order of overlapping elements."},
+            { front:"What is the use of display: none;?", back:"Hides the element and removes it from the layout."},
+            { front:"What is the difference between inline and block elements?", back:"inline elements do not break the flow; block elements do and take full width."},
+            { front:"What does display: flex; do?", back:"Turns the container into a flex container."},
+            { front:"What is the purpose of justify-content in flexbox?", back:"Aligns items along the main axis (e.g., left, right, center, space-between)."},
+            { front:"How do you align items vertically in flexbox?", back:"Use align-items: center;"},
+            { front:"How can you create a horizontal navigation bar using flexbox?", back:"Set display: flex; on the nav container and arrange items inside."},
+            { front:"What is the difference between flex-direction: row; and column;?", back:"row arranges items horizontally, column arranges vertically."},
+            { front:"How do you center text in CSS?", back:"text-align: center;"},
+            { front:"What is the use of line-height in CSS?", back:"Controls the space between lines of text."},
+            { front:"How do you remove the underline from a link?", back:"text-decoration: none;"},
+            { front:"How do you capitalize the first letter of each word in a text?", back:"text-transform: capitalize;"},
+            { front:"How do you capitalize the first letter of each word in a text?", back:"@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');body { font-family: 'Roboto', sans-serif; }"},
+            { front:"What is the difference between em, rem, and px?", back:"px is absolute; em is relative to parent; rem is relative to root."},
+            { front:"How do you make an element take 100% of the width of its parent?", back:"width: 100%;"},
+            { front:"What is the default unit in CSS if none is specified?", back:"px"},
+            { front:"Which unit is relative to the root element's font size?", back:"rem"},
+            { front:"What does vw and vh represent?", back:"vw = viewport width, vh = viewport height"},
+            { front:"What does !important do in CSS?", back:"Overrides all other declarations for that property."},
+            { front:"What is the difference between id and class in CSS?", back:"id is unique per page, class can be reused."},
+            { front:"How do you apply multiple classes to an HTML element?", back:"<div class='box red'> (space-separated class names)"},
+            { front:"What is the :first-child pseudo-class?", back:"Selects the first child of a parent: p:first-child"},
+            { front:"How do you apply different styles depending on screen size (responsive design)?", back:"@media (max-width: 600px) {body { font-size: 14px; }}"} 
+        ];
+    </script>
+</body>
+</html>

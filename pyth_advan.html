@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>Python Advanced</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Python Advanced Knowledge</div>
+                <div class="card-back" id="card-back">Advanced Knowledge</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front:"What is a metaclass in Python?", back:"A class of a class; it controls the creation of classes." },
+            { front:"What does the 'super()' function do?", back:"It calls a method from a parent class." },
+            { front:"What is the MRO (Method Resolution Order)?", back:"The order in which Python looks for a method in a hierarchy." },
+            { front:"How do you define a property in a class?", back:"Using the @property decorator." },
+            { front:"What is a descriptor in Python?", back:"An object that defines __get__, __set__, and __delete__." },
+            { front:"What is the difference between classmethod and staticmethod?", back:"classmethod takes cls; staticmethod takes neither cls nor self." },
+            { front:"What is duck typing?", back:"Type is determined by behavior rather than inheritance." },
+            { front:"What is the difference between __str__ and __repr__?", back:"__str__ is for users; __repr__ is for developers/debugging." },
+            { front:"How do you implement a context manager?", back:"Use __enter__ and __exit__ methods or @contextmanager." },
+            { front:"What is the 'with' statement used for?", back:"It simplifies resource management using context managers." },
+            { front:"What is a coroutine in Python?", back:"A function that can pause and resume its execution (async/await)." },
+            { front:"How do you create an asynchronous function?", back:"Use async def and await inside it." },
+            { front:"What is the GIL?", back:"Global Interpreter Lock: only one thread executes Python bytecode at a time." },
+            { front:"How do you achieve true parallelism in Python?", back:"Using multiprocessing instead of threading." },
+            { front:"What are Python slots?", back:"__slots__ restricts dynamic attribute creation and saves memory." },
+            { front:"What is monkey patching?", back:"Dynamically changing classes or modules at runtime." },
+            { front:"What is memoization in functools?", back:"Caching function calls using @lru_cache." },
+            { front:"How do you create an abstract base class?", back:"Use abc.ABC and @abstractmethod." },
+            { front:"What is the purpose of the 'yield from' statement?", back:"Delegates part of a generator to another generator." },
+            { front:"What are Python type hints?", back:"They define expected argument and return types in functions." },
+            { front:"How do you declare a Union type hint?", back:"Union[int, str] or int | str (Python 3.10+)" },
+            { front:"What does the walrus operator ':=' do?", back:"Assigns a value to a variable as part of an expression." },
+            { front:"What is pattern matching (Python 3.10+)?", back:"A switch-case like structure using match-case blocks." },
+            { front:"How do you serialize objects in Python?", back:"Using the pickle or json module." },
+            { front:"What is the difference between pickle and json?", back:"Pickle handles Python objects; JSON is human-readable and portable." },
+            { front:"What are dunder methods?", back:"Special methods like __init__, __str__, etc." },
+            { front:"How can you dynamically import a module?", back:"Using importlib.import_module()" },
+            { front:"How do you inspect objects at runtime?", back:"Use the inspect module." },
+            { front:"What is the difference between shallow and deep copy?", back:"Shallow copies references; deep copies all objects recursively." },
+            { front:"How do you deep copy an object?", back:"Use copy.deepcopy()" },
+            { front:"What is a weak reference?", back:"A reference that doesn’t increase the reference count." },
+            { front:"How does Python manage memory?", back:"Using reference counting and garbage collection." },
+            { front:"What is an iterator protocol?", back:"Object with __iter__() and __next__() methods." },
+            { front:"What is the difference between iterable and iterator?", back:"Iterator has __next__; iterable can return an iterator." },
+            { front:"What is a frozen set?", back:"An immutable version of a set." },
+            { front:"What does the @dataclass decorator do?", back:"Automatically generates __init__, __repr__, and __eq__ for classes." },
+            { front:"What is the purpose of __call__?", back:"Makes an instance behave like a function." },
+            { front:"What is function currying?", back:"Creating functions with some arguments pre-filled using functools.partial." },
+            { front:"What is metaprogramming?", back:"Code that manipulates code, like decorators or metaclasses." },
+            { front:"What is eval() and why is it dangerous?", back:"Evaluates a string as Python code; risky due to arbitrary code execution." },
+            { front:"How do you prevent circular imports?", back:"Use local imports or restructure your modules." },
+            { front:"What does sys.argv contain?", back:"Command-line arguments passed to a script." },
+            { front:"What is the use of __init__.py?", back:"Marks a directory as a Python package." },
+            { front:"How can you optimize Python performance?", back:"Use built-in functions, avoid global variables, leverage NumPy or Cython." },
+            { front:"What are asyncio tasks?", back:"Coroutines scheduled to run concurrently using asyncio.create_task()" },
+            { front:"What is a sentinel value?", back:"A unique object used to signify missing or default values." },
+            { front:"What are the differences between range() and xrange()?", back:"xrange() was used in Python 2.x for lazy evaluation; Python 3 uses range() lazily." },
+            { front:"How do you catch exceptions in a clean way?", back:"Use try-except-else-finally blocks." },
+            { front:"What is a proxy object?", back:"An object that delegates operations to another object." }
+        ];
+    </script>
+</body>
+</html>

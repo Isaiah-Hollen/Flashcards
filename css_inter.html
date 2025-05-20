@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>CSS Intermediate</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Css Intermediate Knowledge</div>
+                <div class="card-back" id="card-back">Intermediate Knowledge</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front: "What does the 'nth-child(n)' pseudo-class do?", back: "Selects the nth child of a parent, where n can be a number, keyword, or formula." },
+            { front: "How do you center a div horizontally using Flexbox?", back: "Use `display: flex; justify-content: center;` on the container." },
+            { front: "What is the difference between 'visibility: hidden' and 'display: none'?", back: "`visibility: hidden` hides the element but it still takes up space. `display: none` removes it from the layout flow." },
+            { front: "How do you create a responsive layout using media queries?", back: "Use `@media` rules with breakpoints, e.g., `@media (max-width: 768px) { ... }`" },
+            { front: "What is the default value of the 'position' property?", back: "static" },
+            { front: "What is the z-index used for?", back: "It controls the vertical stacking order of elements." },
+            { front: "What does the 'object-fit' property do?", back: "Specifies how an image or video should be resized to fit its container." },
+            { front: "How do you apply styles to all direct children of an element?", back: "Use the child combinator selector: `parent > child`" },
+            { front: "What is the difference between inline, block, and inline-block elements?", back: "Inline does not respect width/height, block takes full width, inline-block is inline but respects box dimensions." },
+            { front: "How do you create a CSS transition effect?", back: "Use `transition: property duration timing-function;`" },
+            { front: "What is the default box-sizing value?", back: "content-box" },
+            { front: "How do you include multiple background images?", back: "Use `background-image: url('img1.png'), url('img2.png');`" },
+            { front: "What does 'inherit' do in CSS?", back: "Forces an element to inherit the value from its parent." },
+            { front: "What is the use of the 'calc()' function?", back: "Allows you to perform calculations for property values (e.g., `width: calc(100% - 50px);`)." },
+            { front: "What is the difference between em and rem?", back: "`em` is relative to parent font-size, `rem` is relative to root font-size." },
+            { front: "How do you style elements when printing a webpage?", back: "Use `@media print` in a media query." },
+            { front: "How do you set a minimum and maximum width for an element?", back: "`min-width` and `max-width` properties." },
+            { front: "What does 'opacity: 0.5' mean?", back: "The element is 50% transparent." },
+            { front: "How do you make a sticky header?", back: "Use `position: sticky; top: 0;`" },
+            { front: "What does 'overflow: hidden;' do?", back: "Clips overflowing content and hides the rest." },
+            { front: "How can you vertically align text inside a div?", back: "Use Flexbox: `display: flex; align-items: center;`" },
+            { front: "What is the purpose of the 'clip-path' property?", back: "Defines a clipping region to display only a portion of an element." },
+            { front: "What does the 'not()' selector do?", back: "Excludes elements that match the given selector." },
+            { front: "What is the effect of 'transform: scale(1.2)'?", back: "Scales the element up by 20%." },
+            { front: "How do you rotate an element?", back: "Use `transform: rotate(deg);`" },
+            { front: "What is the difference between absolute and fixed positioning?", back: "`absolute` is relative to the nearest positioned ancestor; `fixed` is relative to the viewport." },
+            { front: "How do you apply a linear gradient as a background?", back: "Use `background: linear-gradient(direction, color1, color2);`" },
+            { front: "How do you disable resizing on a `<textarea>`?", back: "Use `resize: none;`" },
+            { front: "What does 'pointer-events: none;' do?", back: "Disables all mouse interactions with the element." },
+            { front: "What’s the shorthand for setting padding on all four sides?", back: "`padding: top right bottom left;`" },
+            { front: "How do you create a hover effect that changes background color?", back: "`element:hover { background-color: newColor; }`" },
+            { front: "What property is used to add shadow to text?", back: "`text-shadow`" },
+            { front: "What property is used to add shadow to elements?", back: "`box-shadow`" },
+            { front: "How do you apply multiple classes to a single HTML element?", back: "Separate them with spaces: `<div class='class1 class2'>`" },
+            { front: "What is a pseudo-element?", back: "A keyword added to selectors that allows styling parts of an element (e.g., `::before`, `::after`)." },
+            { front: "What does the ':focus' pseudo-class do?", back: "Applies styles to elements when they are focused (like input fields)." },
+            { front: "How can you clear floats?", back: "Use `clear: both;` or add `overflow: auto;` to the parent." },
+            { front: "What does the `currentColor` keyword mean?", back: "Uses the current value of the `color` property." },
+            { front: "How do you animate an element using CSS?", back: "Use `@keyframes` and `animation` properties." },
+            { front: "What is the difference between visibility and opacity?", back: "`visibility: hidden` hides the element but keeps space; `opacity: 0` makes it invisible but still interactive." },
+            { front: "What’s the difference between `inline` and `inline-block`?", back: "`inline` ignores width/height, `inline-block` allows them." },
+            { front: "How do you remove list bullets in a `<ul>`?", back: "`list-style: none;`" },
+            { front: "What property is used to control the spacing between letters?", back: "`letter-spacing`" },
+            { front: "How do you prevent an element from being resized beyond a limit?", back: "Use `max-width` and/or `max-height`." },
+            { front: "What is the difference between `auto` and `0` for margin?", back: "`auto` centers the element (for block with set width); `0` sets no margin." },
+            { front: "What property is used to align text to the right?", back: "`text-align: right;`" },
+            { front: "How can you make an image fully responsive?", back: "`max-width: 100%; height: auto;`" },
+            { front: "What is the use of the 'white-space' property?", back: "Controls how white space inside an element is handled." },
+            { front: "What does `cursor: pointer;` do?", back: "Changes the mouse pointer to a hand icon on hover." }
+        ];
+    </script>
+</body>
+</html>

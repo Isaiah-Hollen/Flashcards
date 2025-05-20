@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>JavaScript Basics</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">JavaScript Basics</div>
+                <div class="card-back" id="card-back">Basics</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front: "What is JavaScript primarily used for?", back: "To create interactive effects within web browsers." },
+            { front: "Which HTML element is used to embed JavaScript?", back: "<script>" },
+            { front: "How do you write 'Hello World' in an alert box?", back: "alert('Hello World');" },
+            { front: "How do you create a variable in JavaScript?", back: "Use `var`, `let`, or `const` (e.g., let x = 5;)." },
+            { front: "Which operator is used to assign a value to a variable?", back: "=" },
+            { front: "How do you write a single-line comment in JavaScript?", back: "// comment here" },
+            { front: "How do you write a multi-line comment in JavaScript?", back: "/* comment */" },
+            { front: "What is the correct syntax for referring to an external script?", back: "<script src='script.js'><'/script>" },
+            { front: "How do you declare a function in JavaScript?", back: "function myFunction() { }" },
+            { front: "How do you call a function named 'myFunction'?", back: "myFunction();" },
+            { front: "What is the correct way to write a JavaScript array?", back: "let arr = [1, 2, 3];" },
+            { front: "How do you access the first element of an array?", back: "array[0]" },
+            { front: "How do you get the length of an array?", back: "array.length" },
+            { front: "Which keyword stops the execution of a function and returns a value?", back: "return" },
+            { front: "How do you create a conditional 'if' statement?", back: "if (condition) { // code }" },
+            { front: "How do you write an 'else' statement?", back: "if (condition) { } else { }" },
+            { front: "How do you write an 'else if' condition?", back: "if (a) { } else if (b) { }" },
+            { front: "Which loop repeats a block of code while a condition is true?", back: "while loop" },
+            { front: "Which loop executes a block of code a specific number of times?", back: "for loop" },
+            { front: "What is the correct syntax of a for loop?", back: "for (let i = 0; i < 5; i++) { }" },
+            { front: "What is an object in JavaScript?", back: "A collection of key-value pairs (e.g., { name: 'John', age: 30 })" },
+            { front: "How do you access a property of an object?", back: "object.property or object['property']" },
+            { front: "What does `typeof` return?", back: "The data type of a variable (e.g., 'number', 'string')" },
+            { front: "What is a string in JavaScript?", back: "Text enclosed in quotes (e.g., 'Hello')" },
+            { front: "How do you concatenate strings in JavaScript?", back: "Using + or template literals (`Hello ${name}`)" },
+            { front: "What is the difference between == and ===?", back: "== compares value, === compares value and type" },
+            { front: "How do you check if two values are not equal?", back: "Use != or !==" },
+            { front: "What is the result of 10 + '5'?", back: "'105' (string concatenation)" },
+            { front: "How do you convert a string to a number?", back: "Use Number(), parseInt(), or parseFloat()" },
+            { front: "How do you convert a number to a string?", back: "Use String() or toString()" },
+            { front: "What is NaN?", back: "It stands for 'Not-a-Number'" },
+            { front: "How do you check if a value is NaN?", back: "Use isNaN(value)" },
+            { front: "What is an event in JavaScript?", back: "An action that occurs (e.g., click, load, input)" },
+            { front: "How do you attach a click event in JavaScript?", back: "element.addEventListener('click', function)" },
+            { front: "What is the DOM?", back: "Document Object Model, a tree structure of the webpage" },
+            { front: "How do you access an HTML element by its ID?", back: "document.getElementById('id')" },
+            { front: "How do you change the content of an element in JavaScript?", back: "element.innerHTML = 'New content';" },
+            { front: "What does `document.querySelector()` do?", back: "Selects the first matching element using a CSS selector" },
+            { front: "What is `null` in JavaScript?", back: "An intentional absence of any object value" },
+            { front: "What is `undefined` in JavaScript?", back: "A variable declared but not assigned a value" },
+            { front: "What is the use of `console.log()`?", back: "To print messages to the browser console (for debugging)" },
+            { front: "What is a boolean?", back: "A value that is either true or false" },
+            { front: "How do you define a constant variable?", back: "Using `const` keyword" },
+            { front: "Can a constant variable be reassigned?", back: "No, const variables cannot be reassigned" },
+            { front: "What are the logical operators in JavaScript?", back: "&& (and), || (or), ! (not)" },
+            { front: "What does `Math.random()` return?", back: "A number between 0 (inclusive) and 1 (exclusive)" },
+            { front: "What does `Math.floor(4.9)` return?", back: "4" },
+            { front: "What is an array method to add an item to the end?", back: "array.push(item)" },
+            { front: "How do you remove the last item from an array?", back: "array.pop()" },
+            { front: "What is the difference between `let` and `var`?", back: "`let` has block scope, `var` has function scope" }
+        ];
+    </script>
+</body>
+</html>

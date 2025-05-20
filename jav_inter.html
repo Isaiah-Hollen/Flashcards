@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>JavaScript Intermediate</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">JavaScript Intermediate Knowledge</div>
+                <div class="card-back" id="card-back">Intermediate Knowledge</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards =
+        [
+            { front: "What is a JavaScript callback function?", back: "A function passed as an argument to another function to be executed later." },
+            { front: "What does `setTimeout()` do?", back: "Executes a function after a specified delay (in milliseconds)." },
+            { front: "What does `setInterval()` do?", back: "Calls a function repeatedly at specified intervals." },
+            { front: "How do you clear an interval created with setInterval?", back: "Use `clearInterval(intervalID)`." },
+            { front: "What is event delegation?", back: "A technique where one event listener handles events for multiple child elements." },
+            { front: "What is the `this` keyword?", back: "Refers to the object it belongs to, depending on context." },
+            { front: "What is the difference between `==` and `===`?", back: "`==` allows type coercion, `===` checks both type and value." },
+            { front: "What is a JavaScript closure?", back: "A function that remembers variables from its outer scope even after that scope has closed." },
+            { front: "What are arrow functions?", back: "Concise syntax for writing functions: `const fn = () => {}`." },
+            { front: "How do arrow functions handle `this`?", back: "Arrow functions do not bind their own `this`; they inherit it from the parent scope." },
+            { front: "What is destructuring in JavaScript?", back: "Extracting values from arrays or properties from objects into variables." },
+            { front: "How do you destructure an object?", back: "const { name, age } = person;" },
+            { front: "How do you destructure an array?", back: "const [a, b] = arr;" },
+            { front: "What is the spread operator?", back: "`...` used to expand elements of an array or object." },
+            { front: "What is the rest parameter?", back: "`...args` used to represent an indefinite number of arguments as an array." },
+            { front: "How do you clone an array using the spread operator?", back: "let newArr = [...oldArr];" },
+            { front: "How do you merge arrays?", back: "[...arr1, ...arr2]" },
+            { front: "What is the `map()` function?", back: "Creates a new array with results of calling a function on every element." },
+            { front: "What is the `filter()` function?", back: "Creates a new array with elements that pass a test." },
+            { front: "What is the `reduce()` function?", back: "Reduces array to a single value using an accumulator function." },
+            { front: "What does `find()` do?", back: "Returns the first element that satisfies the provided testing function." },
+            { front: "What does `some()` do?", back: "Checks if at least one element satisfies a condition." },
+            { front: "What does `every()` do?", back: "Checks if all elements satisfy a condition." },
+            { front: "What is a promise in JavaScript?", back: "An object representing the eventual completion or failure of an asynchronous operation." },
+            { front: "What are the states of a promise?", back: "Pending, Fulfilled, Rejected." },
+            { front: "What is `async`/`await`?", back: "Syntax to handle Promises more cleanly, making asynchronous code look synchronous." },
+            { front: "How do you catch errors with async/await?", back: "Use try...catch blocks." },
+            { front: "What is a template literal?", back: "A string that allows embedded expressions using backticks (`) and ${}." },
+            { front: "What does `Object.keys(obj)` return?", back: "An array of the object's own enumerable property names." },
+            { front: "What does `Object.values(obj)` return?", back: "An array of the object's own enumerable values." },
+            { front: "What is `Object.entries(obj)` used for?", back: "Returns an array of the object's key-value pairs." },
+            { front: "What is the DOMContentLoaded event?", back: "Fired when the initial HTML is loaded and parsed." },
+            { front: "What is localStorage?", back: "A web storage object that stores data with no expiration." },
+            { front: "How do you store data in localStorage?", back: "localStorage.setItem('key', 'value');" },
+            { front: "How do you retrieve data from localStorage?", back: "localStorage.getItem('key');" },
+            { front: "What is JSON?", back: "JavaScript Object Notation, used for storing and exchanging data." },
+            { front: "How do you convert an object to JSON?", back: "JSON.stringify(obj);" },
+            { front: "How do you convert JSON to an object?", back: "JSON.parse(jsonString);" },
+            { front: "What is the difference between `null` and `undefined`?", back: "`null` is an intentional absence; `undefined` means not assigned." },
+            { front: "What is hoisting in JavaScript?", back: "Variables and functions are moved to the top of their scope before execution." },
+            { front: "Which declarations are hoisted?", back: "`var` declarations and function declarations." },
+            { front: "What is a module in JavaScript?", back: "A reusable file that exports variables or functions to be used in other files." },
+            { front: "How do you export a function from a module?", back: "export function myFunc() { }" },
+            { front: "How do you import a function from a module?", back: "import { myFunc } from './module.js';" },
+            { front: "What is a symbol in JavaScript?", back: "A primitive type used to create unique identifiers." },
+            { front: "What is `typeof null`?", back: "An object (a known JavaScript bug)." },
+            { front: "What does the `new` keyword do?", back: "Creates an instance of an object that has a constructor function." },
+            { front: "What is a constructor function?", back: "A function used to create new objects using `new`." },
+            { front: "What is `instanceof` used for?", back: "Checks whether an object is an instance of a constructor." },
+            { front: "What is the event loop in JavaScript?", back: "The mechanism that handles asynchronous callbacks in JavaScript." }
+        ];
+    </script>
+</body>
+</html>

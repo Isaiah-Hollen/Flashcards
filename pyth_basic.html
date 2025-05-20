@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>Python Basics</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Python Basics</div>
+                <div class="card-back" id="card-back">Basics</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front:"What is Python?", back:"A high-level, interpreted programming language known for readability." },
+            { front:"How do you write a comment in Python?", back:"# This is a comment" },
+            { front:"Which function prints output in Python?", back:"print()" },
+            { front:"How do you assign a value to a variable?", back:"variable_name = value" },
+            { front:"How do you get input from the user?", back:"input('Enter something: ')" },
+            { front:"What data type is used to store text?", back:"str" },
+            { front:"What data type is used to store whole numbers?", back:"int" },
+            { front:"What operator is used for exponentiation?", back:"**" },
+            { front:"How do you check the type of a variable?", back:"type(variable)" },
+            { front:"What keyword is used to define a function?", back:"def" },
+            { front:"How do you start an if statement?", back:"if condition:" },
+            { front:"What keyword is used for 'otherwise' in a condition?", back:"else" },
+            { front:"What keyword is used for 'else if' in Python?", back:"elif" },
+            { front:"How do you create a list?", back:"my_list = [1, 2, 3]" },
+            { front:"How do you access the first item in a list?", back:"my_list[0]" },
+            { front:"How do you add an item to the end of a list?", back:"my_list.append(item)" },
+            { front:"How do you remove an item from a list?", back:"my_list.remove(item)" },
+            { front:"What is a tuple?", back:"An immutable ordered collection: (1, 2, 3)" },
+            { front:"What is a dictionary in Python?", back:"A collection of key-value pairs: {'key': 'value'}" },
+            { front:"How do you access a value in a dictionary?", back:"my_dict['key']" },
+            { front:"How do you create a loop that repeats 5 times?", back:"for i in range(5):" },
+            { front:"What loop continues while a condition is true?", back:"while" },
+            { front:"How do you skip an iteration in a loop?", back:"continue" },
+            { front:"How do you stop a loop?", back:"break" },
+            { front:"What is indentation used for in Python?", back:"To define blocks of code." },
+            { front:"How do you handle exceptions in Python?", back:"try: ... except:" },
+            { front:"What is a module in Python?", back:"A file containing Python definitions and functions." },
+            { front:"How do you import a module?", back:"import module_name" },
+            { front:"How do you install external packages?", back:"pip install package_name" },
+            { front:"What is a string in Python?", back:"A sequence of characters enclosed in quotes." },
+            { front:"How do you join strings in Python?", back:"Using + or f-strings." },
+            { front:"How do you write a multi-line string?", back:"Using triple quotes: '''text'''" },
+            { front:"How do you get the length of a list or string?", back:"len()" },
+            { front:"How do you convert a string to an integer?", back:"int('123')" },
+            { front:"How do you convert an integer to a string?", back:"str(123)" },
+            { front:"How do you define a class in Python?", back:"class ClassName:" },
+            { front:"What is 'self' in a class method?", back:"A reference to the current instance of the class." },
+            { front:"What is __init__ in Python classes?", back:"The constructor method called when an object is created." },
+            { front:"What is a boolean value in Python?", back:"True or False" },
+            { front:"How do you check for equality?", back:"==" },
+            { front:"How do you check for inequality?", back:"!=" },
+            { front:"How do you check if a value is in a list?", back:"value in list" },
+            { front:"What does the 'pass' statement do?", back:"It acts as a placeholder and does nothing." },
+            { front:"What is a docstring?", back:"A string that documents a function or class, written right after the definition." },
+            { front:"What does the 'return' statement do?", back:"It exits a function and returns a value." },
+            { front:"What are logical operators in Python?", back:"and, or, not" },
+            { front:"How do you write a single-line if statement?", back:"if x > 0: print(x)" },
+            { front:"How do you open a file in Python?", back:"open('file.txt')" },
+            { front:"How do you read from a file?", back:"file.read()" },
+            { front:"How do you write to a file?", back:"file.write('text')" },
+            { front:"How do you close a file?", back:"file.close()" }
+        ];
+    </script>
+</body>
+</html>

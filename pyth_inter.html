@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>Python Intermediate</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Python Intermediate Knowledge</div>
+                <div class="card-back" id="card-back">Intermediate Knowledge</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front:"What is a list comprehension in Python?", back:"A concise way to create lists: [x for x in iterable if condition]" },
+            { front:"How do you create a dictionary comprehension?", back:"{k: v for k, v in iterable}" },
+            { front:"What is the purpose of the 'zip()' function?", back:"It pairs elements from multiple iterables." },
+            { front:"What does 'enumerate()' do?", back:"It returns index-value pairs from an iterable." },
+            { front:"How do you reverse a list?", back:"list[::-1] or list.reverse()" },
+            { front:"What is slicing in Python?", back:"Accessing parts of sequences using [start:stop:step]" },
+            { front:"What is the difference between 'is' and '=='?", back:"'is' checks identity; '==' checks equality." },
+            { front:"How do you copy a list?", back:"list.copy() or list[:]" },
+            { front:"How do you merge two dictionaries in Python 3.9+?", back:"dict1 | dict2" },
+            { front:"How do you remove duplicates from a list?", back:"Convert to a set: list(set(my_list))" },
+            { front:"What is the difference between a set and a list?", back:"A set is unordered and contains unique items." },
+            { front:"What are *args and **kwargs used for?", back:"To pass variable numbers of arguments to functions." },
+            { front:"How do you raise an exception?", back:"raise Exception('message')" },
+            { front:"How do you define a lambda function?", back:"lambda x: x + 2" },
+            { front:"What is the purpose of the 'map()' function?", back:"It applies a function to every item in an iterable." },
+            { front:"How does 'filter()' work?", back:"It filters items in an iterable based on a condition." },
+            { front:"What does the 'any()' function do?", back:"Returns True if at least one element is true." },
+            { front:"What does the 'all()' function do?", back:"Returns True if all elements are true." },
+            { front:"What is the difference between 'del' and 'remove()'?", back:"'del' deletes by index; 'remove()' deletes by value." },
+            { front:"What does 'with open(...) as f:' do?", back:"It opens a file and automatically closes it after use." },
+            { front:"What does 'readlines()' return?", back:"A list of lines from a file." },
+            { front:"How do you write a class method?", back:"Use @classmethod and pass 'cls' as the first parameter." },
+            { front:"What is a static method?", back:"A method that does not access class or instance data. Use @staticmethod." },
+            { front:"What is the difference between instance and class variables?", back:"Instance variables are unique per object; class variables are shared." },
+            { front:"What does '__str__' do in a class?", back:"Defines how the object is printed." },
+            { front:"What is inheritance in Python?", back:"A way for a class to inherit attributes and methods from another class." },
+            { front:"How do you check if a key exists in a dictionary?", back:"'key' in dict" },
+            { front:"What is the purpose of the 'get()' method for dicts?", back:"Safely get a value with a default: dict.get('key', default)" },
+            { front:"What does 'setdefault()' do?", back:"Returns the value if the key exists, otherwise sets and returns a default." },
+            { front:"How do you unpack tuples?", back:"a, b = (1, 2)" },
+            { front:"How do you unpack dictionaries in a function?", back:"func(**my_dict)" },
+            { front:"What does 'globals()' return?", back:"A dictionary of the global symbol table." },
+            { front:"What does 'locals()' return?", back:"A dictionary of the current local symbol table." },
+            { front:"What is recursion in Python?", back:"When a function calls itself." },
+            { front:"What is memoization?", back:"An optimization technique that caches function results." },
+            { front:"What is a generator function?", back:"A function that yields values using 'yield' instead of return." },
+            { front:"How is a generator different from a list?", back:"Generators are lazy and don't store values in memory." },
+            { front:"What is a decorator in Python?", back:"A function that modifies the behavior of another function." },
+            { front:"What is the difference between '==' and 'is not'?", back:"'==' checks equality, 'is not' checks if not the same object." },
+            { front:"What is a module?", back:"A .py file containing Python code that can be imported." },
+            { front:"What is a package?", back:"A directory with an __init__.py file containing modules." },
+            { front:"How do you handle multiple exceptions?", back:"except (TypeError, ValueError):" },
+            { front:"How do you raise a custom exception?", back:"class MyError(Exception): pass" },
+            { front:"How do you test if a string is numeric?", back:"str.isdigit()" },
+            { front:"How do you join a list into a string?", back:"'separator'.join(list)" },
+            { front:"How do you split a string into a list?", back:"str.split('separator')" },
+            { front:"What is the purpose of 'assert'?", back:"To debug by testing if a condition is true." },
+            { front:"What does 're' stand for in Python?", back:"Regular expressions module." },
+            { front:"How do you match a regex pattern?", back:"re.match(pattern, string)" },
+            { front:"How do you use list unpacking with *?", back:"first, *rest = [1, 2, 3]" }
+        ];
+    </script>
+</body>
+</html>

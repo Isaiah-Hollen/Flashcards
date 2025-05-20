@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>JavaScript Advanced</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">JavaScript Advanced Knowledge</div>
+                <div class="card-back" id="card-back">Advanced Knowledge</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front: "What is the difference between microtasks and macrotasks in the event loop?", back: "Microtasks (Promise callbacks, MutationObserver) run before macrotasks (setTimeout, I/O) at each tick." },
+            { front: "How do you create a generator function?", back: "Use function* name() { yield value; } and call it to get an iterator." },
+            { front: "What does 'for await...of' do?", back: "Iterates over async iterators, awaiting each Promise result." },
+            { front: "How do you define a private class field?", back: "Prefix the field name with #: class C { #private = 0; }" },
+            { front: "What is the purpose of Symbol.iterator?", back: "Defines the default iterator for an object, enabling for...of." },
+            { front: "What is a Proxy in JavaScript?", back: "An object wrapper that intercepts operations (get, set, etc.) via traps." },
+            { front: "How do you use Reflect in JavaScript?", back: "Call Reflect methods (e.g., Reflect.get(obj, prop)) for default behavior in proxies." },
+            { front: "What is a WeakMap and when would you use it?", back: "A Map whose keys are weakly held (garbage-collected if no refs), useful for private data." },
+            { front: "What is tail call optimization?", back: "An optimization where the last function call reuses the current stack frame." },
+            { front: "How do you perform a dynamic import?", back: "Use import('module.js').then(module => { ... }) or await import('module.js')." },
+            { front: "What is import.meta.url?", back: "A URL string of the current module's location." },
+            { front: "What does the nullish coalescing operator (??) do?", back: "Returns the right-hand value if the left-hand side is null or undefined." },
+            { front: "What is optional chaining (?.)?", back: "Safely accesses nested properties, returning undefined if any reference is nullish." },
+            { front: "What is BigInt in JavaScript?", back: "A numeric primitive for arbitrarily large integers, denoted with n suffix." },
+            { front: "How do you clone objects deeply in modern JS?", back: "Use structuredClone(obj) or JSON methods for simple data." },
+            { front: "What is requestAnimationFrame used for?", back: "Schedules a callback before the next repaint for smooth animations." },
+            { front: "What is a Service Worker?", back: "A background script that can intercept network requests and cache responses." },
+            { front: "How do you register a Service Worker?", back: "navigator.serviceWorker.register('/sw.js').then(...)" },
+            { front: "What is the BroadcastChannel API?", back: "Allows simple messaging between browsing contexts (tabs/windows) of the same origin." },
+            { front: "What does performance.now() measure?", back: "High-resolution time, in milliseconds, relative to page load start." },
+            { front: "What are decorators (stage-2)?", back: "Syntax for annotating/decorating classes and class members with metadata or behavior." },
+            { front: "What is a module namespace object?", back: "The object returned by import * as ns from 'mod'; containing exports as properties." },
+            { front: "What is the difference between CommonJS and ES modules?", back: "CommonJS uses require/exports; ES modules use import/export and are statically analyzable." },
+            { front: "What is tree-shaking?", back: "Removing unused code during bundling by analyzing static imports/exports." },
+            { front: "How does the JS engine optimize hot code paths?", back: "By JIT-compiling frequently run code and inlining functions." },
+            { front: "What is memory leak in JS, and give an example?", back: "Unreleased references prevent GC, e.g., global arrays growing forever." },
+            { front: "How do you detect memory leaks in the browser?", back: "Use Chrome DevTools Memory panel to take heap snapshots and check detach nodes." },
+            { front: "What is the purpose of globalThis?", back: "A standard way to access the global object across environments." },
+            { front: "How do you implement memoization?", back: "Cache function call results in an object keyed by arguments." },
+            { front: "What is currying?", back: "Transforming a function with multiple args into a sequence of single-arg functions." },
+            { front: "What is function composition?", back: "Combining functions so the output of one is the input of the next." },
+            { front: "How do you use the URL API for query parameters?", back: "new URL(url).searchParams.get('key')" },
+            { front: "What is the Role of the Event Loop in async/await?", back: "Await returns to the event loop, resuming after the current stack clears." },
+            { front: "What is StructuredClone and when to use it?", back: "A built-in method to deep-copy complex data types (ArrayBuffer, Map, etc.)." },
+            { front: "What is a ReadableStream in Web APIs?", back: "A stream abstraction for reading data incrementally." },
+            { front: "How do you create a Custom Element?", back: "class MyEl extends HTMLElement { } customElements.define('my-el', MyEl);" },
+            { front: "What is Shadow DOM?", back: "Encapsulated DOM subtree to scope CSS and markup for Web Components." },
+            { front: "How do you attach a Shadow Root?", back: "element.attachShadow({ mode: 'open' });" },
+            { front: "What is CSS Typed OM?", back: "An API to manipulate CSS values and rules via JavaScript objects." },
+            { front: "What is the MutationObserver API?", back: "Observes DOM changes and invokes a callback on mutations." },
+            { front: "How do you throttle a function?", back: "Limit calls to at most once per interval using timing logic." },
+            { front: "How do you debounce a function?", back: "Delay execution until a specified time after the last call." },
+            { front: "What is the Temporal proposal?", back: "A new standard API for date/time handling, replacing Date." },
+            { front: "How do you use Intl.DateTimeFormat?", back: "Formats dates based on locale: new Intl.DateTimeFormat('en-US').format(date)" },
+            { front: "What is Symbol.toStringTag?", back: "Customizes the default string description of objects (e.g., [object Tag])." },
+            { front: "What is Symbol.species?", back: "Controls the constructor used by methods that create derived objects." },
+            { front: "How do you work with WebCrypto API for hashing?", back: "crypto.subtle.digest('SHA-256', data).then(hashBuffer => { ... })" },
+            { front: "What is the difference between try/catch and .catch() on Promises?", back: "try/catch works with async/await; .catch() attaches to Promise chains." },
+            { front: "How do you limit concurrency of async operations?", back: "Use a pool or semaphore pattern to control simultaneous Promises." },
+            { front: "What is the purpose of AbortController?", back: "Provides a signal to cancel fetch requests or other DOM operations." },
+            { front: "How do you use AbortController with fetch?", back: "const ac = new AbortController(); fetch(url, { signal: ac.signal }); ac.abort();" },
+            { front: "What is EventTarget.prototype.dispatchEvent used for?", back: "Manually dispatch custom events on DOM elements." },
+            { front: "How do you create a SharedArrayBuffer?", back: "new SharedArrayBuffer(byteLength)" },
+            { front: "What are Atomics in JS?", back: "Low-level atomic operations for safe memory access in SharedArrayBuffer." },
+            { front: "What is the purpose of queueMicrotask()?", back: "Schedules a function to run in the microtask queue after the current execution." }
+        ];
+    </script>
+</body>
+</html>
