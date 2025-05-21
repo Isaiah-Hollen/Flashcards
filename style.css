@@ -2,25 +2,21 @@
 h1{
   text-align: center;
   color: white;
-  font-weight: 500;
+  font-weight: 500rem;
   font-size: 3rem;
   font-family: 'Times New Roman', Times, serif;
-  margin-top: 80px;
-}
-body {
-font-family: Arial, sans-serif;
-margin: 0;
+  margin-top: 5rem;
 }
 .navbar {
 background-color: #333;
 overflow: hidden;
-padding: 15px;
+padding: .9375rem;
 }
 .navbar a {
 float: left;
 color: white;
 text-align: center;
-padding: 14px 20px;
+padding: .875rem 1.25rem;
 text-decoration: none;
 }
 .dropdown {
@@ -28,11 +24,11 @@ float: left;
 overflow: hidden;
 }
 .dropdown .dropbtn {
-font-size: 16px;
+font-size: 1rem;
 border: none;
 outline: none;
 color: white;
-padding: 14px 20px;
+padding: .875rem 1.25rem;
 background-color: inherit;
 margin: 0;
 }
@@ -40,14 +36,14 @@ margin: 0;
 display: none;
 position: absolute;
 background-color: #f9f9f9;
-min-width: 160px;
-box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+min-width: 10rem;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
 z-index: 1;
 }
 .dropdown-content a {
 float: none;
 color: black;
-padding: 12px 16px;
+padding: .75rem 1rem;
 text-decoration: none;
 display: block;
 text-align: left;
@@ -64,64 +60,70 @@ display: block;
 
 /* This is all for the cards */
 .card {
-      font-family: Arial, sans-serif;
-      background: #7d7c7c;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px;
-    }
+    font-family: Arial, sans-serif;
+    background: #7d7c7c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-height: 25rem;
+    margin: 0 auto;
+    padding: 2.5rem;
+  }
 .stack{
-      font-family: Arial, sans-serif;
-      background: #7d7c7c;
-      padding: 3px;
+    font-family: Arial, sans-serif;
+    background: #7d7c7c;
+    padding: .1875rem;
 
-    }
-    .flashcard {
-      width: 300px;
-      height: 180px;
-      perspective: 1000px;
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-    }
-    .flashcard.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
-    .card-front, .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      background-color: white;
-      border: 2px solid #333;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      font-size: 18px;
-    }
-    .card-back {
-      transform: rotateY(180deg);
-      background-color: #e0e0e0;
-    }
-    /* This is for everything not that inortant */
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border: none;
-      background-color: #333;
-      color: white;
-      border-radius: 5px;
+  }
+  .flashcard {
+    width: 18.75rem;
+    height: 11.25rem;
+    perspective: 62.5rem;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+  }
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  .flashcard.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: white;
+    border: .125rem solid #333;
+    border-radius: .625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    font-size: 1.125rem;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+    background-color: #e0e0e0;
+  }
+  /* This is for everything not that inortant */
+  button {
+    padding: .625rem 1.25rem;
+    cursor: pointer;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: .3125rem;
+    min-height: 3rem;
+    min-height: 3rem;
+    min-width: 3rem;
+      font-size: 1rem;
     }
     #back{
       float: left;
@@ -145,9 +147,9 @@ display: block;
         #2D00F7,
         #FF124F
     );
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(.625rem);
     border: .18rem solid rgb(92, 91, 91);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 .5rem 2rem rgba(0, 0, 0, 0.2);
     color: white;
 }
 .index:hover{
@@ -201,4 +203,14 @@ p{
 }
 footer a:hover{
   color: lightblue;
+}
+@media (max-width: 37.5rem){
+  body{
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+  .nav{
+    flex-direction: column;
+  }
 }
