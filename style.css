@@ -134,6 +134,14 @@ display: block;
     button:hover {
       background-color: #555;
     }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px; /* spacing between buttons */
+      margin-top: 1.25rem;
+      margin-left: 3.4375rem;
+    }
+
 .index{
   border-radius: .8rem;
   max-width: fit-content;
