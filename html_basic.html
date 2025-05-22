@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>HTML Basics</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">HTML Basics</div>
+                <div class="card-back" id="card-back">Basics</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front: "What does HTML stand for?", back: "HyperText Markup Language" },
+            { front: "What is the purpose of HTML?", back: "To structure content on the web." },
+            { front: "Which tag is used for the largest heading?", back: "<h1>" },
+            { front: "Which tag creates a hyperlink?", back: "<a>" },
+            { front: "How do you insert an image in HTML?", back: "<img src='image.jpg' alt='description'>" },
+            { front: "What tag defines a paragraph?", back: "<p>" },
+            { front: "Which HTML tag is used to create an unordered list?", back: "<ul>" },
+            { front: "What tag is used for a list item?", back: "<li>" },
+            { front: "Which tag is used for line breaks?", back: "<br>" },
+            { front: "What tag is used to define a table?", back: "<table>" },
+            { front: "What tag defines a table row?", back: "<tr>" },
+            { front: "What tag defines a table header?", back: "<th>" },
+            { front: "What tag defines a table cell?", back: "<td>" },
+            { front: "What attribute is used for image alternative text?", back: "alt" },
+            { front: "Which element contains metadata?", back: "<head>" },
+            { front: "What tag defines the document title?", back: "<title>" },
+            { front: "Which tag wraps all visible content?", back: "<body>" },
+            { front: "What tag is used for bold text?", back: "<b>" },
+            { front: "What tag is used for italic text?", back: "<i>" },
+            { front: "How do you make a numbered list?", back: "<ol>" },
+            { front: "Which tag is used to input text?", back: "<input type='text'>" },
+            { front: "What tag creates a dropdown menu?", back: "<select>" },
+            { front: "Which element defines emphasized text?", back: "<em>" },
+            { front: "Which element defines important text?", back: "<strong>" },
+            { front: "What is the correct HTML for creating a checkbox?", back: "<input type='checkbox'>" },
+            { front: "What tag is used to create a form?", back: "<form>" },
+            { front: "What is the purpose of the <label> tag?", back: "To define a label for an <input> element." },
+            { front: "Which tag is used for a submit button?", back: "<input type='submit'>" },
+            { front: "What attribute specifies a link destination?", back: "href" },
+            { front: "How do you open a link in a new tab?", back: "Add target='_blank'" },
+            { front: "Which element defines an inline frame?", back: "<iframe>" },
+            { front: "Which element defines a section in a document?", back: "<section>" },
+            { front: "What does the <div> tag do?", back: "Defines a division or section." },
+            { front: "What is the purpose of the <span> tag?", back: "To style inline elements." },
+            { front: "Which tag defines a navigation bar?", back: "<nav>" },
+            { front: "What is the purpose of the <footer> tag?", back: "To define a footer for a document or section." },
+            { front: "Which HTML element defines the main content?", back: "<main>" },
+            { front: "What does the <article> tag represent?", back: "Independent, self-contained content." },
+            { front: "What does the <aside> tag define?", back: "Content indirectly related to the main content." },
+            { front: "What does the <header> tag do?", back: "Defines a header for a page or section." },
+            { front: "What tag is used to embed audio?", back: "<audio>" },
+            { front: "What tag is used to embed video?", back: "<video>" },
+            { front: "What attribute is used to specify the path of a media file?", back: "src" },
+            { front: "Which tag is used to add a comment?", back: "<!-- comment -->" },
+            { front: "What is the correct HTML for a doctype declaration?", back: "<!DOCTYPE html>" },
+            { front: "Which attribute specifies inline CSS styles?", back: "style" },
+            { front: "What is semantic HTML?", back: "HTML that uses meaningful tags to describe content." },
+            { front: "What does the <meta> tag do?", back: "Provides metadata like charset and viewport." },
+            { front: "How do you set the charset in HTML?", back: "<meta charset='UTF-8'>" },
+            { front: "How do you specify a language for your page?", back: "<html lang='en'>" }
+        ];
+    </script>
+</body>
+</html>

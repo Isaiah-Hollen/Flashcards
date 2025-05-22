@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>HTML Advanced</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">HTML Advanced</div>
+                <div class="card-back" id="card-back">Advanced</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front: "What is the Shadow DOM in HTML?", back: "A web standard that allows encapsulation of DOM and CSS." },
+            { front: "What is the purpose of the <slot> element in Web Components?", back: "Acts as a placeholder inside a shadow DOM for light DOM content." },
+            { front: "What is 'custom elements' in HTML?", back: "A way to define new HTML tags with custom behavior using JavaScript." },
+            { front: "What does the 'is' attribute allow in HTML5?", back: "Extends native elements with custom behavior using web components." },
+            { front: "What is the use of <canvas>?", back: "Used to draw graphics via JavaScript (e.g., games, charts)." },
+            { front: "What are ARIA roles in HTML?", back: "Attributes that improve accessibility by describing elements to assistive tech." },
+            { front: "What does the 'contenteditable' attribute do?", back: "Makes any HTML element editable." },
+            { front: "What is the 'sandbox' attribute in <iframe> used for?", back: "Applies restrictions to iframe content for security." },
+            { front: "How do you declare a web manifest file in HTML?", back: "<link rel='manifest' href='manifest.json'>" },
+            { front: "What is the purpose of a web manifest?", back: "Defines how a web app appears to the user and can be installed." },
+            { front: "How can you preload assets in HTML?", back: "<link rel='preload' href='file.js' as='script'>" },
+            { front: "What does <picture> element do?", back: "Provides multiple sources for responsive images." },
+            { front: "What are media queries in HTML used for?", back: "Used with <link> or <style> to apply styles conditionally based on screen size." },
+            { front: "How does lazy loading images work in HTML?", back: "Use loading='lazy' on <img> to defer loading until needed." },
+            { front: "What does the <dialog> tag represent?", back: "Defines a dialog box or window." },
+            { front: "How do you open a <dialog> element via JavaScript?", back: "Use .show() or .showModal() methods." },
+            { front: "What is the use of <output> tag?", back: "Displays the result of a calculation or user action." },
+            { front: "What is the difference between <embed> and <object>?", back: "<embed> is for external resources; <object> supports more content types." },
+            { front: "What does the 'hidden' attribute do?", back: "Hides the element from view without removing it from the DOM." },
+            { front: "What does <track> tag in <video> provide?", back: "Adds subtitles, captions, descriptions, or metadata to media." },
+            { front: "What is the use of the 'scoped' attribute in <style>?", back: "Limits CSS rules to the parent element (no longer supported by all browsers)." },
+            { front: "What is the difference between defer and async attributes on script tags?", back: "'defer' waits until document parsing ends; 'async' executes as soon as loaded." },
+            { front: "What is a polyfill in HTML context?", back: "A browser fallback for unsupported HTML5 features using JS/CSS." },
+            { front: "What is the <isindex> tag?", back: "Deprecated tag used for single-line text input." },
+            { front: "What does the 'spellcheck' attribute do?", back: "Enables spell checking for editable text fields." },
+            { front: "What is the purpose of the 'form' attribute outside form tags?", back: "Allows elements outside <form> to be associated with the form." },
+            { front: "What is the 'inputmode' attribute?", back: "Hints at what kind of input should be used on virtual keyboards." },
+            { front: "How do you define an image map in HTML?", back: "Use <map> with <area> inside and reference it in <img usemap='#mapname'>" },
+            { front: "What is the purpose of the <bdi> tag?", back: "Isolates a part of text that might be formatted in a different direction." },
+            { front: "What is the <bdo> tag used for?", back: "Overrides the current text direction (ltr/rtl)." },
+            { front: "What does the 'draggable' attribute do?", back: "Enables an element to be dragged." },
+            { front: "What are data-* attributes in HTML?", back: "Used to store custom data on elements." },
+            { front: "What is the <keygen> element?", back: "Used for generating keys for forms (now deprecated)." },
+            { front: "What is the purpose of <wbr>?", back: "Suggests a line break opportunity in text." },
+            { front: "What is the 'crossorigin' attribute on scripts/images?", back: "Controls CORS requests for fetches initiated by the element." },
+            { front: "What is the <applet> tag?", back: "Deprecated tag used to embed Java applets." },
+            { front: "How can you make a favicon visible on all browsers?", back: "Use <link rel='icon' type='image/x-icon' href='favicon.ico'>" },
+            { front: "What is the use of <noscript> in <head>?", back: "Defines fallback content for browsers without JavaScript." },
+            { front: "What are microdata attributes (itemscope, itemprop)?", back: "Used to label HTML elements with machine-readable tags." },
+            { front: "What is the <main> tag for?", back: "Represents the dominant content of the <body>." },
+            { front: "How do you associate a <label> with an input without ID?", back: "Wrap the input inside the <label> element." },
+            { front: "What does the <param> tag do in <object>?", back: "Defines parameters for plugins in <object>." },
+            { front: "What does the 'type' attribute in <link> do?", back: "Specifies the MIME type of the linked document." },
+            { front: "How can you provide fallbacks for <video> or <audio>?", back: "Include alternative text or formats inside the tags." },
+            { front: "What is the <ruby> element used for?", back: "Defines ruby annotations (like pronunciations) in East Asian typography." },
+            { front: "What is <rt> used for in <ruby>?", back: "Defines the pronunciation of characters in <ruby>." },
+            { front: "What is the <rp> element in <ruby> for?", back: "Provides parentheses for unsupported ruby browsers." },
+            { front: "How do you indicate a script type as module?", back: "<script type='module'>" },
+            { front: "What is the difference between module and nomodule scripts?", back: "Module scripts use ES6 features; 'nomodule' scripts are for older browsers." }
+        ];
+    </script>
+</body>
+</html>

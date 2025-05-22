@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>HTML Intermediate</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">HTML Intermediate</div>
+                <div class="card-back" id="card-back">Intermediate</div>
+            </div>
+        </div>
+    </main>
+    <button id="back" onclick="lastCard()">Back</button>
+    <button id="next" onclick="nextCard()">Next</button>
+    <script>
+        const flashcards = 
+        [
+            { front: "What does the 'action' attribute in a <form> tag do?", back: "Specifies where to send the form data when submitted." },
+            { front: "What is the 'method' attribute used for in a <form>?", back: "Specifies the HTTP method (GET or POST) to use when sending form data." },
+            { front: "How do you group form elements together?", back: "Using the <fieldset> tag." },
+            { front: "What is the purpose of the <legend> tag?", back: "Provides a caption for the <fieldset> element." },
+            { front: "What is the purpose of the 'required' attribute in inputs?", back: "Forces the user to fill out the field before submitting the form." },
+            { front: "How can you create a multi-line text input?", back: "Using the <textarea> tag." },
+            { front: "What is the 'name' attribute in form inputs used for?", back: "Identifies form data when sent to the server." },
+            { front: "What is the difference between <button> and <input type='submit'>?", back: "<button> can contain HTML and allows more styling flexibility." },
+            { front: "How do you make an input field read-only?", back: "Use the 'readonly' attribute." },
+            { front: "What is the use of the 'disabled' attribute in a form element?", back: "Prevents the user from interacting with the input." },
+            { front: "How do you specify a default option in a <select> menu?", back: "Add the 'selected' attribute to an <option> element." },
+            { front: "What does the 'multiple' attribute do in <select>?", back: "Allows the user to select more than one option." },
+            { front: "How do you embed a document within another HTML document?", back: "Using the <iframe> tag." },
+            { front: "What is the purpose of the 'srcdoc' attribute in an <iframe>?", back: "Defines HTML content to display inside the iframe." },
+            { front: "What is the difference between <article> and <section>?", back: "<article> is self-contained; <section> groups related content." },
+            { front: "How do you specify the character encoding for an HTML document?", back: "<meta charset='UTF-8'>" },
+            { front: "How can you make a responsive image?", back: "Use 'width: 100%' or 'max-width: 100%' in CSS." },
+            { front: "What tag is used for scalable vector graphics?", back: "<svg>" },
+            { front: "What tag defines a container for external applications or interactive content?", back: "<object>" },
+            { front: "What is the purpose of the <template> tag?", back: "Holds HTML that is not rendered until it is inserted via JavaScript." },
+            { front: "What is the 'autofocus' attribute used for?", back: "Automatically focuses an input field when the page loads." },
+            { front: "What does the <noscript> tag do?", back: "Displays content when JavaScript is disabled in the browser." },
+            { front: "What is the purpose of the 'novalidate' attribute in a form?", back: "Disables HTML5 form validation." },
+            { front: "How do you allow file uploads in a form?", back: "<input type='file'>" },
+            { front: "What attribute is needed for file uploads?", back: "enctype='multipart/form-data'" },
+            { front: "How can you associate a <label> with an <input>?", back: "Use the 'for' attribute on <label> matching the input's 'id'." },
+            { front: "What is the 'placeholder' attribute used for?", back: "Shows temporary text in an input field." },
+            { front: "How do you include external JavaScript in HTML?", back: "<script src='script.js'>< /script>" },
+            { front: "How do you include an external CSS file?", back: "<link rel='stylesheet' href='styles.css'>" },
+            { front: "What is the 'defer' attribute on a script tag for?", back: "Delays script execution until after the document is parsed." },
+            { front: "What does the 'async' attribute on a script tag do?", back: "Loads the script asynchronously with the HTML parsing." },
+            { front: "What does the <base> tag do?", back: "Specifies a base URL for relative links in the document." },
+            { front: "How do you add a favicon to a page?", back: "<link rel='icon' href='favicon.ico'>" },
+            { front: "What is the difference between <strong> and <b>?", back: "<strong> has semantic importance, <b> is purely visual." },
+            { front: "What is the difference between <em> and <i>?", back: "<em> has emphasis meaning, <i> is visual italic." },
+            { front: "What is the function of the <mark> tag?", back: "Highlights text." },
+            { front: "What does the <time> tag represent?", back: "A specific time or date." },
+            { front: "How do you define keyboard input text?", back: "Use the <kbd> tag." },
+            { front: "What does the <progress> element represent?", back: "Displays the progress of a task." },
+            { front: "What does the <meter> element measure?", back: "A scalar value within a known range." },
+            { front: "What tag defines sample output from a program?", back: "<samp>" },
+            { front: "What is the purpose of the <code> tag?", back: "Displays computer code." },
+            { front: "How do you reference a location in the same document?", back: "Use anchor links like <a href='#section1'>" },
+            { front: "What does the 'download' attribute on a link do?", back: "Tells the browser to download the file instead of opening it." },
+            { front: "What does the <abbr> tag do?", back: "Defines an abbreviation or acronym with a tooltip." },
+            { front: "What is the <details> tag used for?", back: "Creates a widget the user can open/close." },
+            { front: "What is the <summary> tag used for?", back: "Defines the summary for a <details> element." },
+            { front: "What is the purpose of the <data> tag?", back: "Links a piece of content with a machine-readable value." },
+            { front: "How do you make an HTML element draggable?", back: "Add draggable='true'" }
+        ];
+    </script>
+</body>
+</html>
