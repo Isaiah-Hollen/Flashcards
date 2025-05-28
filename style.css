@@ -92,7 +92,7 @@ display: block;
     transform-style: preserve-3d;
   }
   .flashcard.flipped .card-inner {
-    transform: translate(40px) rotateY(180deg);
+    transform: translate(2.5rem) rotateY(180deg);
   }
   .card-front, .card-back {
     position: absolute;
