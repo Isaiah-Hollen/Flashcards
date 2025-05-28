@@ -92,7 +92,7 @@ display: block;
     transform-style: preserve-3d;
   }
   .flashcard.flipped .card-inner {
-    transform: rotateY(180deg);
+    transform: translate(40px) rotateY(180deg);
   }
   .card-front, .card-back {
     position: absolute;
@@ -123,7 +123,7 @@ display: block;
     min-height: 3rem;
     min-height: 3rem;
     min-width: 3rem;
-      font-size: 1rem;
+    font-size: 1rem;
     }
     #back{
       float: left;
@@ -137,7 +137,7 @@ display: block;
     .button-container {
       display: flex;
       justify-content: center;
-      gap: 30px; /* spacing between buttons */
+      gap: 30px;
       margin-top: 1.25rem;
       margin-left: 3.4375rem;
     }
