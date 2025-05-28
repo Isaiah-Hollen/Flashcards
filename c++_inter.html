@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>C++ Intermediate</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">C++ Intermediate</div>
+                <div class="card-back" id="card-back">Intermediate</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front: "What is a constructor in C++?", back: "A special function automatically called when an object is created." },
+            { front: "What is a destructor?", back: "A function called when an object is destroyed, used to release resources." },
+            { front: "What is function overloading?", back: "Defining multiple functions with the same name but different parameters." },
+            { front: "What is operator overloading?", back: "Redefining how operators work for user-defined types." },
+            { front: "What is the difference between a class and a struct in C++?", back: "Default access in class is private; in struct it's public." },
+            { front: "What are access specifiers?", back: "Keywords that define the access level: public, private, protected." },
+            { front: "What is encapsulation?", back: "Bundling data and methods that operate on that data." },
+            { front: "What is inheritance?", back: "The ability of a class to inherit properties from another class." },
+            { front: "What is polymorphism?", back: "The ability of functions or objects to behave differently based on context." },
+            { front: "What is the difference between compile-time and run-time polymorphism?", back: "Compile-time uses function overloading; run-time uses virtual functions." },
+            { front: "What is a virtual function?", back: "A function that can be overridden in derived classes for run-time polymorphism." },
+            { front: "What does the 'this' pointer represent?", back: "Pointer to the current object." },
+            { front: "What is a reference variable?", back: "An alias for another variable, declared with '&'." },
+            { front: "What is a copy constructor?", back: "Constructor that creates a new object as a copy of an existing object." },
+            { front: "What is an initializer list?", back: "Syntax to initialize class members in a constructor." },
+            { front: "What is an abstract class?", back: "A class with at least one pure virtual function." },
+            { front: "What is a pure virtual function?", back: "A virtual function set to 0, requiring override in derived classes." },
+            { front: "What is the difference between shallow and deep copy?", back: "Shallow copy copies pointers; deep copy duplicates actual data." },
+            { front: "What is dynamic memory allocation?", back: "Allocating memory at runtime using new/delete." },
+            { front: "What is the difference between stack and heap memory?", back: "Stack is for static memory; heap is for dynamic memory." },
+            { front: "What is the use of the 'new' keyword?", back: "Allocates memory dynamically and calls a constructor." },
+            { front: "What is the 'delete' keyword used for?", back: "Frees memory allocated by new and calls the destructor." },
+            { front: "What is a static member in a class?", back: "Shared among all objects of the class." },
+            { front: "What is a friend function?", back: "A function that can access private and protected members of a class." },
+            { front: "What is function overriding?", back: "Redefining a base class's virtual function in a derived class." },
+            { front: "What is a namespace?", back: "A declarative region to avoid name conflicts." },
+            { front: "What is the difference between '==' and '='?", back: "'=' assigns a value; '==' compares values." },
+            { front: "What is the 'const' keyword used for?", back: "Declares a variable or function argument as read-only." },
+            { front: "What is the difference between const int* and int* const?", back: "Pointer to const vs const pointer to int." },
+            { front: "What is the significance of the 'inline' keyword?", back: "Suggests the compiler to insert function code directly." },
+            { front: "What is a template in C++?", back: "A feature for writing generic functions or classes." },
+            { front: "What is a function template?", back: "Defines a generic function that works with different types." },
+            { front: "What is a class template?", back: "Defines a generic class that works with different types." },
+            { front: "What is the 'typedef' keyword used for?", back: "Creates an alias for another data type." },
+            { front: "What is the difference between typedef and using?", back: "'using' is more modern and supports templates." },
+            { front: "What is an enum?", back: "A user-defined type consisting of named integral constants." },
+            { front: "What is the difference between enum and enum class?", back: "enum class is strongly typed and scoped." },
+            { front: "What is the 'auto' keyword in C++?", back: "Automatically deduces the type of a variable." },
+            { front: "What is a pointer?", back: "A variable that holds the address of another variable." },
+            { front: "What is a null pointer?", back: "A pointer that doesn't point to any memory location." },
+            { front: "What is pointer arithmetic?", back: "Operations like increment, decrement on pointer addresses." },
+            { front: "What is a dangling pointer?", back: "A pointer pointing to memory that has been deleted." },
+            { front: "What is the purpose of 'const' in function arguments?", back: "Prevents the function from modifying the argument." },
+            { front: "What is overloading the assignment operator?", back: "Customizing behavior of '=' for class objects." },
+            { front: "What is std::string in C++?", back: "A standard library class for handling strings." },
+            { front: "What is the Standard Template Library (STL)?", back: "A library of generic containers and algorithms." },
+            { front: "What is a vector in C++?", back: "A dynamic array from the STL that resizes automatically." },
+            { front: "What is an iterator?", back: "An object used to traverse containers like arrays or vectors." },
+            { front: "What is the difference between map and unordered_map?", back: "map is ordered and uses a tree; unordered_map uses hashing." }
+        ];
+    </script>
+</body>
+</html>

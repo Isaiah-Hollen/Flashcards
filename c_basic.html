@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>C Basics</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">C Basics</div>
+                <div class="card-back" id="card-back">Basics</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front:"What is C programming language?", back:"C is a general-purpose, procedural programming language developed in the early 1970s." },
+            { front:"Who developed the C language?", back:"Dennis Ritchie at Bell Labs." },
+            { front:"What is the extension of a C file?", back:".c" },
+            { front:"What is the starting point of a C program?", back:"The main() function." },
+            { front:"How do you include standard input-output library in C?", back:"#include <stdio.h>" },
+            { front:"What does printf() do?", back:"Prints output to the console." },
+            { front:"What does scanf() do?", back:"Reads formatted input from the user." },
+            { front:"What symbol ends a C statement?", back:"A semicolon (;)." },
+            { front:"What is a variable?", back:"A named memory location used to store a value." },
+            { front:"What are the basic data types in C?", back:"int, float, char, double" },
+            { front:"What is the syntax to declare an integer variable?", back:"int x;" },
+            { front:"How do you assign a value to a variable?", back:"x = 5;" },
+            { front:"What is a constant in C?", back:"A fixed value that cannot be altered during program execution." },
+            { front:"How do you declare a constant?", back:"const int x = 10;" },
+            { front:"What is a comment in C?", back:"Text ignored by the compiler. Use // for single-line or /* */ for multi-line." },
+            { front:"What are operators?", back:"Symbols used to perform operations, e.g., +, -, *, /." },
+            { front:"What is an if statement used for?", back:"To perform conditional execution of code." },
+            { front:"What is the else statement used for?", back:"To execute code when the if condition is false." },
+            { front:"What is a loop?", back:"A structure that repeats a block of code while a condition is true." },
+            { front:"Name three types of loops in C.", back:"for, while, do-while" },
+            { front:"What is the syntax of a for loop?", back:"for(init; condition; increment) { /* code */ }" },
+            { front:"What is the syntax of a while loop?", back:"while(condition) { /* code */ }" },
+            { front:"What is the syntax of a do-while loop?", back:"do { /* code */ } while(condition);" },
+            { front:"What is an array?", back:"A collection of elements of the same data type stored in contiguous memory." },
+            { front:"How do you declare an array of 5 integers?", back:"int arr[5];" },
+            { front:"What is a function in C?", back:"A block of code that performs a specific task." },
+            { front:"What is the syntax of a function?", back:"returnType functionName(parameters) { /* code */ }" },
+            { front:"What does return 0 mean in main()?", back:"Indicates successful program termination." },
+            { front:"How do you define a function that returns an integer?", back:"int myFunction() { return 1; }" },
+            { front:"What is a pointer?", back:"A variable that stores the memory address of another variable." },
+            { front:"What is the syntax to declare a pointer to int?", back:"int *ptr;" },
+            { front:"What does & mean in C?", back:"Address-of operator, gives the memory address of a variable." },
+            { front:"What does * mean in C when used with pointers?", back:"Dereference operator, gives the value stored at a memory address." },
+            { front:"What is the size of int typically?", back:"Usually 4 bytes (platform dependent)." },
+            { front:"What is a structure in C?", back:"A user-defined data type that groups different variables under one name." },
+            { front:"How do you declare a structure?", back:"struct MyStruct { int x; char y; };" },
+            { front:"What is a syntax error?", back:"An error due to incorrect syntax or structure of code." },
+            { front:"What is a logical error?", back:"An error where the program runs but produces incorrect results." },
+            { front:"What does the 'break' statement do?", back:"Exits a loop or switch statement." },
+            { front:"What does the 'continue' statement do?", back:"Skips the current iteration of a loop and proceeds to the next." },
+            { front:"What is a header file?", back:"A file containing C declarations and macro definitions to be shared." },
+            { front:"What is recursion?", back:"A function calling itself to solve a smaller instance of the same problem." },
+            { front:"What is a global variable?", back:"A variable declared outside of any function, accessible throughout the program." },
+            { front:"What is a local variable?", back:"A variable declared inside a function, accessible only within it." },
+            { front:"What is a null pointer?", back:"A pointer that does not point to any memory location." },
+            { front:"How do you initialize a null pointer?", back:"int *ptr = NULL;" },
+            { front:"What is the use of typedef?", back:"To create new data type names (aliases)." },
+            { front:"What is the use of malloc()?", back:"Allocates memory at runtime from the heap." },
+            { front:"How do you free memory in C?", back:"Using free(pointer);" },
+            { front:"What is the use of the sizeof operator?", back:"Returns the size in bytes of a data type or variable." }
+        ];
+    </script>
+</body>
+</html>

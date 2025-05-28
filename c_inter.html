@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>C Intermediate</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">C Intermediate</div>
+                <div class="card-back" id="card-back">Intermediate</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front: "What is the difference between malloc() and calloc()?", back: "malloc() allocates uninitialized memory, whereas calloc() allocates memory and initializes all bits to zero." },
+            { front: "Explain the use of the 'static' keyword in C.", back: "It limits the scope of a variable or function to the file or block in which it's declared, and for variables, it retains their value between function calls." },
+            { front: "What is a function pointer in C?", back: "A pointer that points to a function, allowing dynamic selection and invocation of functions." },
+            { front: "How do you declare a function pointer for a function returning int and taking two ints?", back: "int (*funcPtr)(int, int);" },
+            { front: "What is the difference between 'struct' and 'union' in C?", back: "In a struct, each member has its own memory; in a union, all members share the same memory location." },
+            { front: "What is the purpose of the 'extern' keyword?", back: "It declares a global variable or function in another file." },
+            { front: "What is the difference between '++i' and 'i++'?", back: "'++i' increments before the value is used; 'i++' increments after the value is used." },
+            { front: "What is a memory leak in C?", back: "It occurs when dynamically allocated memory is not freed, leading to wasted memory resources." },
+            { front: "What is the purpose of the 'volatile' keyword?", back: "It tells the compiler that a variable's value may change at any time, preventing optimization." },
+            { front: "How do you prevent multiple inclusions of a header file?", back: "By using include guards: #ifndef, #define, and #endif preprocessor directives." },
+            { front: "What is a dangling pointer?", back: "A pointer that points to memory that has been freed or deallocated." },
+            { front: "What is the difference between stack and heap memory?", back: "Stack is used for static memory allocation and is managed by the compiler; heap is used for dynamic memory allocation and managed by the programmer." },
+            { front: "What is a segmentation fault?", back: "An error caused by accessing memory that the program does not have permission to access." },
+            { front: "What is the purpose of the 'const' keyword?", back: "It declares variables whose value cannot be changed after initialization." },
+            { front: "How do you pass a 2D array to a function in C?", back: "By specifying the number of columns: void func(int arr[][COLS])" },
+            { front: "What is the difference between 'break' and 'continue' statements?", back: "'break' exits the loop; 'continue' skips the current iteration and continues with the next." },
+            { front: "What is the use of the 'sizeof' operator?", back: "It returns the size, in bytes, of a data type or object." },
+            { front: "What is pointer arithmetic?", back: "Operations performed on pointers, such as incrementing or decrementing to traverse arrays." },
+            { front: "What is the difference between text and binary modes in file handling?", back: "Text mode interprets certain characters (like newline), whereas binary mode reads/writes data as-is." },
+            { front: "What is a null pointer?", back: "A pointer that does not point to any memory location; typically initialized to NULL." },
+            { front: "What is the purpose of the 'typedef' keyword?", back: "It creates a new name (alias) for an existing data type." },
+            { front: "What is the difference between '==' and '=' operators?", back: "'==' is a comparison operator; '=' is an assignment operator." },
+            { front: "What is recursion in C?", back: "A function calling itself to solve a smaller instance of the problem." },
+            { front: "What is the purpose of the 'register' keyword?", back: "It suggests storing the variable in a CPU register for faster access." },
+            { front: "What is the difference between 'getchar()' and 'scanf()'?", back: "getchar() reads a single character; scanf() can read formatted input." },
+            { front: "What is the use of the 'fseek()' function?", back: "It moves the file pointer to a specific location in a file." },
+            { front: "What is the difference between 'exit()' and '_exit()' functions?", back: "exit() performs cleanup before termination; _exit() terminates immediately without cleanup." },
+            { front: "What is a macro in C?", back: "A preprocessor directive that defines a code fragment to be replaced before compilation." },
+            { front: "What is the purpose of the 'assert()' macro?", back: "It checks a condition and terminates the program if the condition is false." },
+            { front: "What is the difference between 'memcpy()' and 'memmove()'?", back: "memcpy() does not handle overlapping memory regions; memmove() does." },
+            { front: "What is the use of the 'strtok()' function?", back: "It splits a string into tokens based on specified delimiters." },
+            { front: "What is the difference between 'malloc()' and 'realloc()'?", back: "malloc() allocates memory; realloc() resizes previously allocated memory." },
+            { front: "What is the purpose of the 'enum' keyword?", back: "It defines a user-defined type consisting of a set of named integer constants." },
+            { front: "What is the difference between 'fprintf()' and 'printf()'?", back: "fprintf() writes to a file; printf() writes to standard output." },
+            { front: "What is the use of the 'feof()' function?", back: "It checks if the end of a file has been reached." },
+            { front: "What is the difference between 'strcpy()' and 'strncpy()'?", back: "strcpy() copies a string; strncpy() copies up to a specified number of characters." },
+            { front: "What is the purpose of the 'setjmp()' and 'longjmp()' functions?", back: "They provide a way to perform non-local jumps in C, useful for error handling." },
+            { front: "What is a memory alignment?", back: "Arranging data in memory according to specific boundaries to improve performance." },
+            { front: "What is the difference between 'const char *p' and 'char const *p'?", back: "Both declare a pointer to a constant character; the syntax is interchangeable." },
+            { front: "What is the purpose of the 'offsetof()' macro?", back: "It returns the offset of a member within a struct." },
+            { front: "What is the difference between 'union' and 'enum'?", back: "A union stores different data types in the same memory location; an enum defines named integer constants." },
+            { front: "What is the use of the 'signal()' function?", back: "It sets a function to handle specific signals, like interrupts." },
+            { front: "What is the difference between 'strcat()' and 'strncat()'?", back: "strcat() concatenates strings; strncat() concatenates up to a specified number of characters." },
+            { front: "What is the purpose of the 'va_list' type and related macros?", back: "They handle functions with variable numbers of arguments." },
+            { front: "What is the difference between 'fopen()' modes 'w' and 'a'?", back: "'w' creates a new file or truncates existing; 'a' appends to the end of the file." },
+            { front: "What is the use of the 'perror()' function?", back: "It prints a descriptive error message to stderr." },
+            { front: "What is the difference between 'unlink()' and 'remove()'?", back: "Both delete files; 'unlink()' is POSIX-specific, 'remove()' is standard C." },
+            { front: "What is the purpose of the 'atexit()' function?", back: "It registers functions to be called upon program termination." },
+            { front: "What is the difference between 'clock()' and 'time()' functions?", back: "clock() returns processor time; time() returns calendar time." },
+            { front: "What is the use of the 'qsort()' function?", back: "It sorts an array using a comparison function." },
+            { front: "What is the purpose of the 'bsearch()' function?", back: "It performs binary search on a sorted array." },
+            { front: "What is the difference between 'exit()' and 'abort()'?", back: "exit() performs cleanup and exits; abort() causes abnormal program termination without cleanup." }
+        ];
+    </script>
+</body>
+</html>

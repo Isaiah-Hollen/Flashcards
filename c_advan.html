@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>C Advanced</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">C Advanced</div>
+                <div class="card-back" id="card-back">Advanced</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front: "What is the difference between setjmp() and longjmp()?", back: "setjmp() saves the calling environment for later use by longjmp() to perform a non-local jump." },
+            { front: "What is undefined behavior in C?", back: "Behavior for which the C standard imposes no requirements, leading to unpredictable results." },
+            { front: "How is memory alignment handled in C?", back: "By aligning data on memory boundaries for performance; compiler may add padding." },
+            { front: "What are restrict-qualified pointers?", back: "Pointers declared with 'restrict' promise no other pointer will access the same memory." },
+            { front: "What are the dangers of buffer overflow?", back: "It can corrupt memory, crash programs, or allow execution of malicious code." },
+            { front: "What is the purpose of __attribute__ in GCC?", back: "It provides special compiler instructions like alignment, packing, or unused flags." },
+            { front: "What is memory mapping (mmap)?", back: "Mapping files or devices into memory to enable efficient file I/O or IPC." },
+            { front: "Explain function-like macros and pitfalls.", back: "They act like functions but don’t do type checking and can have side effects." },
+            { front: "What is the significance of _Generic in C11?", back: "It allows type-generic macros for selecting expressions based on type." },
+            { front: "What are variadic functions and how are they implemented?", back: "Functions with variable arguments using stdarg.h macros like va_start, va_arg, va_end." },
+            { front: "How do you declare and use inline assembly in C?", back: "Using 'asm' or '__asm__' keyword, often GCC-specific syntax." },
+            { front: "What is the impact of strict aliasing rule?", back: "It can lead to incorrect optimizations if violated; affects pointer-based code." },
+            { front: "What is pointer aliasing?", back: "When two or more pointers access the same memory, potentially leading to conflicts." },
+            { front: "What is the role of volatile with memory-mapped I/O?", back: "It ensures each access goes to hardware and prevents optimization caching." },
+            { front: "What is the difference between _exit() and exit()?", back: "_exit() terminates immediately without flushing stdio buffers, exit() performs cleanup." },
+            { front: "How do you create a shared library in C?", back: "Compile with -fPIC and link with -shared; load using dlopen()." },
+            { front: "What is the purpose of dlopen and dlsym?", back: "They allow dynamic loading of shared libraries at runtime." },
+            { front: "How are threads handled in C?", back: "Using POSIX threads (pthreads): pthread_create(), pthread_join(), etc." },
+            { front: "What is a race condition?", back: "A flaw where the output depends on the sequence/timing of threads or processes." },
+            { front: "What is false sharing in multithreading?", back: "Multiple threads modify variables that share the same cache line, hurting performance." },
+            { front: "How can you prevent deadlocks?", back: "By acquiring locks in a consistent order and avoiding circular wait conditions." },
+            { front: "What is a weak symbol in C?", back: "A symbol that can be overridden by another during linking." },
+            { front: "What is placement new in C?", back: "C does not support 'new', but placement new exists in C++ only." },
+            { front: "What is memory sanitization?", back: "Tools like valgrind or AddressSanitizer help detect memory misuse and leaks." },
+            { front: "How do you align a struct on a 64-byte boundary?", back: "Use compiler-specific attributes like __attribute__((aligned(64)))." },
+            { front: "What are memory barriers?", back: "Instructions that enforce ordering constraints on memory operations in concurrent code." },
+            { front: "How does the C preprocessor work?", back: "It handles macro expansion, file inclusion, and conditional compilation before compiling." },
+            { front: "What is loop unrolling?", back: "An optimization technique that reduces loop overhead and increases performance." },
+            { front: "What is tail call optimization?", back: "Compiler optimization that reuses the current function's stack frame for a final call." },
+            { front: "What are intrusive data structures?", back: "Data structures where nodes themselves store pointers for linkage (e.g., Linux kernel lists)." },
+            { front: "What is the use of offsetof()?", back: "Gives the byte offset of a struct member from the start of the struct." },
+            { front: "What is packed struct?", back: "A struct with no padding between members; declared with __attribute__((packed))." },
+            { front: "What is a segmentation fault?", back: "Accessing memory not allocated or allowed, causing abnormal termination." },
+            { front: "What are the dangers of casting pointers?", back: "Incorrect casting can lead to misaligned access and undefined behavior." },
+            { front: "What is type punning?", back: "Accessing a data object as a different type, which can violate strict aliasing rules." },
+            { front: "How do you ensure atomic access in C?", back: "Use atomic builtins like __sync_fetch_and_add or stdatomic.h (C11)." },
+            { front: "What are signal-safe functions?", back: "Functions safe to call from within a signal handler, like write(), _exit()." },
+            { front: "What is errno in C?", back: "A macro expanding to a global int storing error codes from library calls." },
+            { front: "What is the difference between fork and exec?", back: "fork() creates a copy of the process; exec() replaces current process with a new program." },
+            { front: "What is IPC in C?", back: "Inter-process communication: shared memory, message queues, pipes, and semaphores." },
+            { front: "What is a memory fence?", back: "A CPU instruction that prevents certain kinds of reordering for memory operations." },
+            { front: "How do you implement thread synchronization?", back: "Using mutexes, condition variables, spinlocks, and semaphores." },
+            { front: "What is a thunk in C?", back: "A piece of code to adapt calling conventions or insert hooks at runtime." },
+            { front: "What is link-time optimization (LTO)?", back: "Optimization across translation units at the linking stage for better performance." },
+            { front: "How do you use memory pools in C?", back: "Pre-allocate blocks of memory and manage allocations from this pool manually." },
+            { front: "What is the difference between static and dynamic linking?", back: "Static links code at compile time; dynamic links at runtime via shared libraries." },
+            { front: "What are compiler builtins?", back: "Special functions provided by the compiler like __builtin_popcount or __builtin_expect." },
+            { front: "What is a trampoline function?", back: "A function dynamically created to redirect calls, often used in closures or debugging." },
+            { front: "What is cache coherence?", back: "Maintaining consistency of shared data in different processor caches in SMP systems." }
+        ];
+    </script>
+</body>
+</html>

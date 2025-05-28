@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>C++ Advanced</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">C++ Advanced</div>
+                <div class="card-back" id="card-back">Advanced</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front: "What is the Rule of Five in C++?", back: "If a class requires a user-defined destructor, copy/move constructor, or copy/move assignment, it likely needs all five." },
+            { front: "What is placement new in C++?", back: "A way to construct an object in a pre-allocated memory buffer." },
+            { front: "What does the 'explicit' keyword do in constructors?", back: "Prevents implicit conversions." },
+            { front: "What is SFINAE in C++?", back: "Substitution Failure Is Not An Error – a feature of template metaprogramming." },
+            { front: "What is the difference between 'override' and 'final' in C++11?", back: "'override' ensures a method overrides a base class method; 'final' prevents further overriding." },
+            { front: "What are rvalue references used for?", back: "To implement move semantics and perfect forwarding." },
+            { front: "How does move semantics improve performance?", back: "Avoids deep copying by transferring ownership of resources." },
+            { front: "What is a virtual destructor?", back: "Ensures the derived class destructor is called when deleting via a base pointer." },
+            { front: "What is the purpose of std::unique_ptr?", back: "Smart pointer that ensures sole ownership of a dynamically allocated object." },
+            { front: "What is the purpose of std::shared_ptr?", back: "Smart pointer that allows multiple shared ownerships of an object." },
+            { front: "How does std::weak_ptr prevent circular references?", back: "It observes shared_ptr without increasing reference count." },
+            { front: "What is the use of noexcept in functions?", back: "Declares a function does not throw exceptions; improves optimizations." },
+            { front: "What is a lambda expression in C++?", back: "An anonymous function object used for inline functions." },
+            { front: "What is a variadic template?", back: "A template that can take an arbitrary number of template arguments." },
+            { front: "What is the use of std::enable_if?", back: "Used in template metaprogramming to enable/disable functions based on conditions." },
+            { front: "What are template specializations?", back: "Custom implementation of a template for a specific type." },
+            { front: "What is a constexpr function?", back: "A function that can be evaluated at compile-time." },
+            { front: "What is the difference between static_cast and dynamic_cast?", back: "static_cast is compile-time; dynamic_cast is runtime with RTTI." },
+            { front: "What is RAII?", back: "Resource Acquisition Is Initialization – managing resources via object lifetimes." },
+            { front: "What is std::function?", back: "A general-purpose polymorphic function wrapper." },
+            { front: "What is a functor in C++?", back: "A class that overloads the operator() to act like a function." },
+            { front: "What is type erasure?", back: "A technique to hide specific types behind a generic interface." },
+            { front: "What is the difference between 'inline' and 'constexpr'?", back: "'inline' suggests compiler to expand in place; 'constexpr' ensures compile-time evaluation." },
+            { front: "What is the One Definition Rule (ODR)?", back: "States that entities should have a single definition across translation units." },
+            { front: "What is a virtual table (vtable)?", back: "A mechanism for dynamic dispatch of virtual functions." },
+            { front: "What is the diamond problem in multiple inheritance?", back: "Ambiguity caused by inheriting from a common base class twice." },
+            { front: "How is the diamond problem solved in C++?", back: "Using virtual inheritance." },
+            { front: "What is the difference between function overloading and overriding?", back: "Overloading changes signatures; overriding changes behavior in derived classes." },
+            { front: "What is std::move used for?", back: "Casts an object to an rvalue to allow moving." },
+            { front: "What is std::forward used for?", back: "Preserves the value category (lvalue/rvalue) in template functions." },
+            { front: "What is the use of friend class?", back: "Allows a class to access private/protected members of another class." },
+            { front: "What is the purpose of std::any?", back: "A type-safe container for single values of any type." },
+            { front: "What is std::optional used for?", back: "Represents an optional value that may or may not be present." },
+            { front: "What is std::variant?", back: "A type-safe union holding one of several types." },
+            { front: "What is an abstract class?", back: "A class with at least one pure virtual function." },
+            { front: "What is a pure virtual function?", back: "A function declared with = 0 that must be overridden by derived classes." },
+            { front: "What is memory alignment and padding?", back: "Alignment is memory placement; padding fills gaps between members for alignment." },
+            { front: "What is std::mutex used for?", back: "Provides mutual exclusion in multithreaded code." },
+            { front: "What is a deadlock?", back: "A situation where two or more threads wait forever for resources held by each other." },
+            { front: "What is std::thread?", back: "A C++11 class for creating and managing threads." },
+            { front: "What is the difference between stack and heap allocation?", back: "Stack is automatic and fast; heap is dynamic and requires manual management." },
+            { front: "What is alignment specifier alignas?", back: "Specifies alignment requirements for variables or types." },
+            { front: "What is std::atomic?", back: "Provides atomic operations on variables to prevent data races." },
+            { front: "What is the difference between deep copy and shallow copy?", back: "Deep copy duplicates resources; shallow copy copies pointers to same resources." },
+            { front: "What is a memory leak?", back: "When dynamically allocated memory is not freed properly." },
+            { front: "What is the difference between const int* and int* const?", back: "const int* is a pointer to constant int; int* const is a constant pointer to int." },
+            { front: "What are the three types of polymorphism in C++?", back: "Compile-time (function/template overloading), Run-time (virtual), and Parametric (templates)." },
+            { front: "What is the difference between 'new' and 'malloc'?", back: "'new' constructs objects and throws exceptions; 'malloc' allocates memory and returns NULL on failure." },
+            { front: "What is std::aligned_storage?", back: "Provides storage suitable for any type with specified size and alignment." }
+        ];
+    </script>
+</body>
+</html>

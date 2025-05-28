@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>C++ Basics</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">C++ Basics</div>
+                <div class="card-back" id="card-back">Basics</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front: "What is C++?", back: "A general-purpose programming language that is an extension of C." },
+            { front: "Who developed C++?", back: "Bjarne Stroustrup." },
+            { front: "What is a variable in C++?", back: "A storage location with a name and a data type." },
+            { front: "What is the syntax to declare an integer variable?", back: "int x;" },
+            { front: "How do you take user input in C++?", back: "Using cin, e.g., cin >> variable;" },
+            { front: "How do you display output in C++?", back: "Using cout, e.g., cout << variable;" },
+            { front: "What is the correct file extension for a C++ program?", back: ".cpp" },
+            { front: "What is the main function?", back: "The starting point of a C++ program: int main() {...}" },
+            { front: "What symbol ends a statement in C++?", back: "A semicolon (;)." },
+            { front: "What is a comment in C++?", back: "Text ignored by the compiler. Single-line: //, Multi-line: /* */" },
+            { front: "What are the basic data types in C++?", back: "int, float, double, char, bool" },
+            { front: "What is a constant?", back: "A variable whose value cannot change after assignment, declared using const." },
+            { front: "What are operators in C++?", back: "Symbols that perform operations on variables and values." },
+            { front: "Give an example of an arithmetic operator.", back: "+, -, *, /, %" },
+            { front: "Give an example of a comparison operator.", back: "==, !=, <, >, <=, >=" },
+            { front: "Give an example of a logical operator.", back: "&&, ||, !" },
+            { front: "What is a loop in C++?", back: "A construct that repeats a block of code while a condition is true." },
+            { front: "Name three types of loops in C++.", back: "for, while, do-while" },
+            { front: "What is an array?", back: "A collection of elements of the same type stored in contiguous memory." },
+            { front: "How do you declare an array of 5 integers?", back: "int arr[5];" },
+            { front: "What is a function in C++?", back: "A block of code that performs a specific task." },
+            { front: "What is the syntax of a function?", back: "return_type function_name(parameters) { // code }" },
+            { front: "What is a return statement?", back: "Ends a function and optionally returns a value." },
+            { front: "What is a string in C++?", back: "A sequence of characters." },
+            { front: "Which library must be included to use strings?", back: "#include <string>" },
+            { front: "What is a header file?", back: "A file containing declarations used in multiple programs." },
+            { front: "What is the use of #include?", back: "To include the contents of a file or library in the program." },
+            { front: "What is scope in C++?", back: "The region in which a variable is defined and accessible." },
+            { front: "What is the difference between global and local variables?", back: "Global is accessible everywhere; local only within its function or block." },
+            { front: "What is the 'if' statement used for?", back: "To execute code based on a condition." },
+            { front: "What is the 'else' statement used for?", back: "To execute code when the 'if' condition is false." },
+            { front: "What is a switch statement?", back: "A conditional statement that handles multiple selections by value." },
+            { front: "What is a pointer?", back: "A variable that stores the memory address of another variable." },
+            { front: "What is the syntax to declare a pointer?", back: "int* ptr;" },
+            { front: "What does the & operator do?", back: "Returns the memory address of a variable." },
+            { front: "What does the * operator do when used with a pointer?", back: "Dereferences the pointer to access the value at that address." },
+            { front: "What is the difference between = and ==?", back: "= assigns a value; == compares values." },
+            { front: "What is type casting?", back: "Converting a variable from one type to another." },
+            { front: "What is the difference between implicit and explicit type casting?", back: "Implicit is automatic; explicit uses casting syntax (e.g., (int)x)." },
+            { front: "What does the 'break' statement do?", back: "Exits a loop or switch statement." },
+            { front: "What does the 'continue' statement do?", back: "Skips the current loop iteration and continues with the next." },
+            { front: "What is a class in C++?", back: "A user-defined data type that contains data members and member functions." },
+            { front: "What is an object?", back: "An instance of a class." },
+            { front: "What is encapsulation?", back: "Wrapping data and functions into a single unit called class." },
+            { front: "What is the public keyword used for?", back: "To allow access to class members from outside the class." },
+            { front: "What is private access specifier?", back: "Restricts access to class members from outside the class." },
+            { front: "What is an inline comment in C++?", back: "A comment that starts with // and goes to the end of the line." },
+            { front: "What is the 'using namespace std;' statement?", back: "Allows use of names from the std namespace without prefixing them." },
+            { front: "What does the return 0; statement in main() mean?", back: "Indicates successful program termination." }
+        ];
+    </script>
+</body>
+</html>
