@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Food</button>
+                <div class="dropdown-content">
+                    <a href="food_basic.html">Basic</a>
+                    <a href="food_inter.html">Intermediate</a>
+                    <a href="food_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>Servsafe Basics</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Servsafe Basics</div>
+                <div class="card-back" id="card-back">Basics</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front: "Minimum internal temperature for cooked poultry?", back: "165°F" },
+            { front: "How long should you wash your hands?", back: "20 seconds" },
+            { front: "What is the temperature danger zone?", back: "41°F–135°F" },
+            { front: "When should you clean and sanitize a food-contact surface?", back: "After each use" },
+            { front: "What should you do if you are vomiting or have diarrhea?", back: "Tell your manager and stay home" },
+            { front: "What is cross-contamination?", back: "Transferring harmful germs from one surface/food to another" },
+            { front: "Where should raw meat be stored in a cooler?", back: "Bottom shelf" },
+            { front: "What should you use to handle ready-to-eat food?", back: "Gloves, tongs, or deli paper" },
+            { front: "What should sanitizer solution be checked with?", back: "Test strips" },
+            { front: "What is the safest way to thaw frozen food?", back: "In the refrigerator" },
+            { front: "What temperature should cold food be held at?", back: "41°F or lower" },
+            { front: "What temperature should hot food be held at?", back: "135°F or higher" },
+            { front: "What should you do before putting on gloves?", back: "Wash hands" },
+            { front: "How often should you change gloves?", back: "When torn or contaminated" },
+            { front: "Which food is considered ready-to-eat?", back: "Salad" },
+            { front: "What should you do if food is past its use-by date?", back: "Throw it away" },
+            { front: "What should you use to measure food temperature?", back: "Thermometer" },
+            { front: "What can contaminate food?", back: "Dirty hands" },
+            { front: "When must hands be washed?", back: "After using restroom" },
+            { front: "How should chemicals be stored?", back: "Away from food" },
+            { front: "What pest may spread disease?", back: "Flies" },
+            { front: "What should you do with cracked eggs?", back: "Throw away if unsafe" },
+            { front: "What does FIFO mean?", back: "First In First Out" },
+            { front: "Why label food containers?", back: "Identify contents/date" },
+            { front: "How should dishes be air dried?", back: "Upright and air dry" },
+            { front: "What should you do if a customer says they have a food allergy?", back: "Notify manager/kitchen" },
+            { front: "Which item should be sanitized?", back: "Food-contact surfaces" },
+            { front: "What is the best way to cool hot food?", back: "Divide into shallow pans" },
+            { front: "What should hair restraints do?", back: "Hold hair back" },
+            { front: "What jewelry is usually allowed?", back: "Plain ring" },
+            { front: "What should you do after touching your face?", back: "Wash hands" },
+            { front: "What should you do after handling raw meat?", back: "Wash hands and sanitize surfaces" },
+            { front: "What should you do if glass breaks near food?", back: "Discard exposed food" },
+            { front: "How should wiping cloths be stored?", back: "In sanitizer solution" },
+            { front: "What should be done with dented cans?", back: "Do not use them" },
+            { front: "How can you prevent cross-contamination?", back: "Keep raw and ready-to-eat foods separate" },
+            { front: "What should you do before starting work?", back: "Wash hands and check cleanliness" },
+            { front: "What should you do if a thermometer is inaccurate?", back: "Calibrate it" },
+            { front: "What is the minimum temperature for reheating food?", back: "165°F" },
+            { front: "How should frozen food be received?", back: "Solidly frozen" },
+            { front: "What should you do with food delivered at unsafe temperatures?", back: "Reject it" },
+            { front: "What should you do if gloves become dirty?", back: "Change them" },
+            { front: "What should be used to scoop ice?", back: "Ice scoop" },
+            { front: "Can you use bare hands for ready-to-eat food?", back: "No" },
+            { front: "What should you do after taking out trash?", back: "Wash hands" },
+            { front: "How should food be stored off the floor?", back: "At least 6 inches above floor" },
+            { front: "What is sanitizing?", back: "Reducing germs to safe levels" },
+            { front: "What should you do if you have a cut on your hand?", back: "Bandage it and wear gloves" },
+            { front: "Why should food be covered?", back: "To protect from contamination" },
+            { front: "What should you do if pests are seen?", back: "Report it immediately" }
+        ];
+    </script>
+</body>
+</html>

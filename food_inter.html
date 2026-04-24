@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">CSS</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Food</button>
+                <div class="dropdown-content">
+                    <a href="food_basic.html">Basic</a>
+                    <a href="food_inter.html">Intermediate</a>
+                    <a href="food_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1>Servsafe Intermediate</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Servsafe Intermediate</div>
+                <div class="card-back" id="card-back">Intermediate Knowledge</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front: "What is the minimum internal temperature for ground meat?", back: "155°F for 15 seconds" },
+            { front: "What is the minimum internal temperature for seafood, steaks, and eggs served immediately?", back: "145°F for 15 seconds" },
+            { front: "What is the minimum internal temperature for roasts?", back: "145°F for 4 minutes" },
+            { front: "What is the minimum internal temperature for commercially processed ready-to-eat food reheated for hot holding?", back: "135°F" },
+            { front: "How long can ready-to-eat TCS food be stored at 41°F or lower?", back: "7 days" },
+            { front: "What does TCS stand for?", back: "Time/Temperature Control for Safety" },
+            { front: "What bacteria is commonly linked to poultry and eggs?", back: "Salmonella" },
+            { front: "What bacteria is commonly linked to ground beef?", back: "E. coli" },
+            { front: "What virus is commonly spread by poor handwashing?", back: "Norovirus" },
+            { front: "What is the first step when using a three-compartment sink?", back: "Wash" },
+            { front: "What is the second step when using a three-compartment sink?", back: "Rinse" },
+            { front: "What is the third step when using a three-compartment sink?", back: "Sanitize" },
+            { front: "What is the fourth step after sanitizing dishes?", back: "Air dry" },
+            { front: "What should be done with food prepared in-house and held over 24 hours?", back: "Date mark it" },
+            { front: "What is the maximum receiving temperature for cold TCS food?", back: "41°F or lower" },
+            { front: "What is the maximum receiving temperature for shell eggs?", back: "45°F or lower" },
+            { front: "What is the required cooling method for hot food?", back: "135°F to 70°F in 2 hours, then 41°F in 4 more hours" },
+            { front: "What is the safest way to cool soups or sauces quickly?", back: "Ice bath and shallow pans" },
+            { front: "What should you do if food is in the danger zone for over 4 hours?", back: "Discard it" },
+            { front: "What is the purpose of a variance?", back: "Approval for specialized food processes" },
+            { front: "What is an example of physical contamination?", back: "Metal shavings in food" },
+            { front: "What is an example of chemical contamination?", back: "Cleaner sprayed near food" },
+            { front: "What is an example of biological contamination?", back: "Bacteria or viruses" },
+            { front: "What should a food handler with jaundice do?", back: "Report to manager and be excluded" },
+            { front: "When can a food handler return after vomiting or diarrhea?", back: "After symptom-free period or medical approval" },
+            { front: "Why should thermometers be calibrated regularly?", back: "To ensure accurate readings" },
+            { front: "Where should the thermometer stem be inserted in thin food?", back: "Sideways into thickest part" },
+            { front: "How often should utensils used with TCS food be cleaned if stored at room temp?", back: "Every 4 hours" },
+            { front: "How often should utensils be cleaned if food stays at 41°F or lower?", back: "Every 24 hours" },
+            { front: "What is backflow?", back: "Reverse flow of contaminated water" },
+            { front: "What device prevents backflow?", back: "Air gap or backflow preventer" },
+            { front: "What should be done with recalled food?", back: "Remove and separate it immediately" },
+            { front: "What is the correct storage order in a cooler?", back: "Ready-to-eat top, then seafood, whole cuts, ground meat, poultry bottom" },
+            { front: "Why store raw poultry on the bottom shelf?", back: "Prevents drips contaminating other food" },
+            { front: "What does MSDS/SDS provide?", back: "Chemical safety information" },
+            { front: "What is the concentration of sanitizer checked with?", back: "Test strips" },
+            { front: "What should you do if sanitizer is too weak?", back: "Remix to proper concentration" },
+            { front: "What should you do if sanitizer is too strong?", back: "Dilute to proper concentration" },
+            { front: "What is an approved source of food?", back: "Reputable supplier meeting regulations" },
+            { front: "What should you inspect on delivery trucks?", back: "Cleanliness and temperature control" },
+            { front: "What should you do with swollen or leaking cans?", back: "Reject them" },
+            { front: "What is cross-contact?", back: "Transfer of allergens between foods" },
+            { front: "Name one major food allergen.", back: "Milk, eggs, fish, shellfish, tree nuts, peanuts, wheat, soy, sesame" },
+            { front: "What should be done before preparing allergen-free meals?", back: "Wash, rinse, sanitize surfaces and tools" },
+            { front: "What should servers do about allergy orders?", back: "Clearly communicate to kitchen" },
+            { front: "What is active managerial control?", back: "Proactive prevention of food safety risks" },
+            { front: "What is the best defense against pests?", back: "Deny food, water, and shelter" },
+            { front: "What should garbage areas be like?", back: "Clean and covered" },
+            { front: "Why keep doors closed when possible?", back: "Prevents pest entry" },
+            { front: "What should happen to food in unlabeled spray bottles nearby?", back: "Protect food and properly label chemicals" }
+        ];
+    </script>
+</body>
+</html>

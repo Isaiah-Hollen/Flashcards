@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding/HTML Flash Cards</title>
+    <link rel="icon" type="image/x-icon" href="img/This_Is_Ya_Dog_Say_Hi_To_Ya_Dog-1.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body class="home">
+    <nav>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+                <div class="dropdown">
+                <button class="dropbtn">HTML</button>
+                <div class="dropdown-content">
+                    <a href="html_basic.html">Basic</a>
+                    <a href="html_inter.html">Intermediate</a>
+                    <a href="html_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Food</button>
+                <div class="dropdown-content">
+                    <a href="css_basic.html">Basic</a>
+                    <a href="css_inter.html">Intermediate</a>
+                    <a href="css_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Javascript</button>
+                <div class="dropdown-content">
+                    <a href="jav_basic.html">Basic</a>
+                    <a href="jav_inter.html">Intermediate</a>
+                    <a href="jav_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Python</button>
+                <div class="dropdown-content">
+                    <a href="pyth_basic.html">Basic</a>
+                    <a href="pyth_inter.html">Intermediate</a>
+                    <a href="pyth_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C++</button>
+                <div class="dropdown-content">
+                    <a href="c++_basic.html">Basic</a>
+                    <a href="c++_inter.html">Intermediate</a>
+                    <a href="c++_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">C</button>
+                <div class="dropdown-content">
+                    <a href="c_basic.html">Basic</a>
+                    <a href="c_inter.html">Intermediate</a>
+                    <a href="c_advan.html">Advanced</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Food</button>
+                <div class="dropdown-content">
+                    <a href="food_basic.html">Basic</a>
+                    <a href="food_inter.html">Intermediate</a>
+                    <a href="food_advan.html">Advanced</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h1> Servsafe Advanced</h1>
+    <section class="stack" id="stack"></section>
+    <main class="card">
+        <div class="flashcard" id="flashcard" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front" id="card-front">Servsafe Advanced</div>
+                <div class="card-back" id="card-back">Advanced Knowledge</div>
+            </div>
+        </div>
+    </main>
+    <section class="button-container">
+        <button id="back" onclick="lastCard()">Back</button>
+        <button id="next" onclick="nextCard()">Next</button>
+    </section>
+
+    <script>
+        const flashcards = 
+        [
+            { front: "What is the maximum time ready-to-eat TCS food can be held without temperature control if it starts at 41°F or lower?", back: "6 hours, if it does not exceed 70°F and is labeled with discard time" },
+            { front: "What is the maximum time hot TCS food can be held without temperature control if it starts at 135°F or higher?", back: "4 hours" },
+            { front: "When must a HACCP plan be required?", back: "For specialized processes requiring a variance" },
+            { front: "Name one process that often requires a variance.", back: "Smoking for preservation, curing, reduced oxygen packaging, custom processing, sprouting seeds/beans" },
+            { front: "What are the seven HACCP principles?", back: "Hazard analysis, CCPs, critical limits, monitoring, corrective actions, verification, record keeping" },
+            { front: "What is a Critical Control Point (CCP)?", back: "A step where hazards can be prevented, eliminated, or reduced to safe levels" },
+            { front: "What is a critical limit?", back: "Minimum or maximum value that must be met at a CCP" },
+            { front: "What is corrective action?", back: "Steps taken when a critical limit is not met" },
+            { front: "What is verification in HACCP?", back: "Confirming the system works as intended" },
+            { front: "What is the primary hazard of reduced oxygen packaging?", back: "Clostridium botulinum growth" },
+            { front: "Why are sprouts considered high risk?", back: "Warm, moist growing conditions support pathogens" },
+            { front: "What is the required final rinse temperature for a high-temp dishmachine?", back: "Usually 180°F at manifold (or per manufacturer)" },
+            { front: "What tool verifies dishmachine final rinse temperature?", back: "Maximum registering thermometer or heat labels" },
+            { front: "What should be done if a dishmachine fails sanitizing standards?", back: "Stop use and repair before continued use" },
+            { front: "What is water activity and why does it matter?", back: "Available moisture in food; lower water activity slows microbial growth" },
+            { front: "How does pH affect food safety?", back: "Low pH (high acidity) inhibits many pathogens" },
+            { front: "What is the danger of cooling food in deep containers?", back: "Center stays warm too long in danger zone" },
+            { front: "What records should be kept in a HACCP system?", back: "Temps, monitoring logs, corrective actions, verification records" },
+            { front: "What is the best method to verify sanitizer strength automatically dispensed?", back: "Use test strips regularly" },
+            { front: "What should a manager do if an employee is diagnosed with Norovirus?", back: "Exclude employee and follow reporting requirements" },
+            { front: "Which illnesses commonly require reporting to authorities?", back: "Norovirus, Salmonella Typhi, Shigella, E. coli, Hepatitis A, Nontyphoidal Salmonella" },
+            { front: "What is cross-contact vs cross-contamination?", back: "Cross-contact transfers allergens; cross-contamination transfers pathogens" },
+            { front: "What storage practice helps traceability?", back: "Accurate labels with source/date/lot info" },
+            { front: "What is the first step in an active foodborne illness investigation?", back: "Identify and isolate suspected food/items" },
+            { front: "Why should thermometers be recalibrated after being dropped?", back: "Impact can affect accuracy" },
+            { front: "What is the ice-point calibration temperature?", back: "32°F" },
+            { front: "What is the boiling-point calibration temperature at sea level?", back: "212°F" },
+            { front: "Why may boiling-point calibration vary by location?", back: "Altitude changes boiling temperature" },
+            { front: "What is the safest corrective action if reheated food only reaches 150°F?", back: "Continue reheating to required temperature" },
+            { front: "What is the maximum air temperature for cold holding equipment used to store 41°F food?", back: "Typically 41°F or lower food temperature is required; verify unit can maintain product temp" },
+            { front: "Why are raw shell eggs pooled with caution?", back: "Higher risk of spreading Salmonella through batch" },
+            { front: "What is an imminent health hazard?", back: "Significant threat requiring immediate correction or closure" },
+            { front: "Give one example of an imminent health hazard.", back: "Sewage backup, fire, flood, no water, power outage affecting safety" },
+            { front: "What should happen during a boil-water advisory?", back: "Use approved alternate water or boil as directed; restrict operations if needed" },
+            { front: "Why is employee training part of food safety management?", back: "Reduces unsafe behaviors and improves compliance" },
+            { front: "What is deliberate contamination prevention focused on?", back: "Protecting food from intentional harm" },
+            { front: "What does ALERT stand for in food defense?", back: "Assure, Look, Employees, Reports, Threat" },
+            { front: "What should receiving staff verify for shellfish tags?", back: "Source, date, and retain records as required" },
+            { front: "How long are shellfish identification tags commonly retained?", back: "90 days from last shellfish served/sold" },
+            { front: "Why should pesticides only be applied by licensed professionals?", back: "Improper use can contaminate food and violate laws" },
+            { front: "What is the purpose of a master cleaning schedule?", back: "Ensures routine cleaning tasks are assigned and completed" },
+            { front: "What is FIFO combined with date marking used for?", back: "Stock rotation and safe shelf-life control" },
+            { front: "Why should vacuum-packaged fish often be removed from packaging before thawing?", back: "To reduce botulism risk if required by packaging instructions" },
+            { front: "What is the best response to a suspected allergen exposure incident?", back: "Treat as emergency and follow emergency procedures" },
+            { front: "What is root cause analysis after a food safety incident?", back: "Finding underlying cause to prevent recurrence" },
+            { front: "Why verify supplier approval programs?", back: "Ensures incoming food meets safety standards" },
+            { front: "What does calibration, logs, and audits support?", back: "Verification and due diligence" },
+            { front: "What is a preventive control?", back: "Measure taken to stop hazards before they occur" },
+            { front: "Why separate chemicals from foodservice items too?", back: "Prevents contamination of utensils, linens, packaging" },
+            { front: "What is the manager’s role during a health inspection?", back: "Cooperate, provide records, correct issues, maintain compliance" }
+        ];
+    </script>
+</body>
+</html>
